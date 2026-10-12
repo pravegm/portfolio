@@ -42,6 +42,8 @@ Templates for the monthly report (Phase 10) and the memory files (Phase 11). Rep
 
 **Tax and costs:** GIA realized gains this tax year vs £3,000; unrealized losses available; estimated platform/FX costs this month.
 
+**Consolidation progress** (if the profile has a consolidation goal): lines moved / remaining, £ moved / remaining, CGT used this tax year vs £3,000, ISA allowance used vs £20,000, expected finish month. This month's tranche goes in its own orders table in the executive summary.
+
 **Account placement:** which wrapper each venture pick goes in; GIA holdings classified MOVE / KEEP / EXIT / CHECK. If a migration is under way or requested, include the bed-and-ISA plan (lines to move, estimated CGT vs allowance, sequence, ISA allowance check, estimated costs, step-by-step mechanics).
 
 ---

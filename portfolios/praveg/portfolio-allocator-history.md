@@ -5,12 +5,23 @@
 
 ## OCTOBER 2026 RUN AGENDA (set 2026-10-12)
 1. **Confirm the proposed investment policy and financial foundations** in the profile (first run under the upgraded skill).
-2. **Optimise the eToro portfolio for the long term: account placement plus structure.**
-   - Decision made: micro-caps go in an ISA where available, otherwise the regular eToro account. Crypto (BTC, SOL, BNB), the AI-Revolution copy portfolio and PSTX.CVR stay in the regular account.
-   - Open decision to settle with the user: **which ISA holds the venture sleeve: an eToro ISA (keeps it on eToro; narrower small-cap list, availability must be checked in the app) or the Revolut ISA (10 free trades a month on Ultra, 8 already used by ISA slots).**
-   - Build the full bed-and-ISA migration plan (`references/uk-tax-and-wrappers.md`): classify every eToro holding MOVE / KEEP / EXIT / CHECK; CGT estimate in GBP. On 2026-10-12 the direct holdings were roughly flat in USD (about +$880 gains vs -$800 losses; the +$787 total unrealized was almost all AI-Revolution), plus realized losses since 6 April (ENVX, ADA), so moving everything eligible this tax year looked well under the £3,000 exempt amount. Verify. Then the ISA allowance check, costs and step-by-step mechanics.
-   - Structure review alongside it: concentration (AI-Revolution about 19% of eToro; crypto theme across BTC, SOL, BNB, RIOT, MARA, WULF, COIN), names that have outgrown the micro-cap band (VRTX, NEE, INCY, COIN and others; decide whether they belong in the venture sleeve or the ISA's quality bucket), and dead or tiny lines.
-   - Output: a clear target end-state for the eToro side (what sits where, and why) and the orders to get there, kept separate from this month's £1,000 slot orders.
+2. **Start consolidating everything into the Revolut ISA** (goal in the profile).
+   - Decided: the venture sleeve's future home is the **Revolut ISA**; new micro-cap buys go there from this run. Confirm with Praveg: no more eToro deposits.
+   - Build the consolidation plan below: classify every eToro line MOVE / KEEP / EXIT / CHECK; CGT estimate in GBP (on 2026-10-12 the direct holdings were roughly flat in USD, about +$880 gains vs -$800 losses, with the +$787 total unrealized almost all in AI-Revolution; realized losses since 6 April: ENVX, ADA), so moving everything eligible this tax year looked well under the £3,000 exempt amount. Verify. Check ISA allowance headroom. Split into monthly tranches.
+   - Settle the exceptions with Praveg: crypto, AI-Revolution (standing decision: keep), PSTX.CVR, non-US/UK listings.
+   - Structure review alongside it: concentration (AI-Revolution about 19% of eToro; crypto theme across BTC, SOL, BNB, RIOT, MARA, WULF, COIN), names that have outgrown the micro-cap band (VRTX, NEE, INCY, COIN and others: in the Revolut ISA they can sit in the quality bucket or the venture sleeve; decide which), and dead or tiny lines. Use the move to fix these: a line that wouldn't be bought today is EXIT, not MOVE.
+   - Output: the target end state, this month's tranche orders, and the CHECK list for the Revolut app, all kept separate from this month's £1,000 slot orders.
+
+## Consolidation plan: eToro → Revolut ISA (update every run until finished)
+Status: not started (plan to be built on the October 2026 run).
+
+| eToro line | Category (MOVE/KEEP/EXIT/CHECK) | Revolut available? | Tranche (month) | Sold on eToro (date, £ gain/loss) | Rebought in ISA (date) | Status |
+|---|---|---|---|---|---|---|
+
+Tranche rules: keep each tax year's net realized gains within the £3,000 exempt amount (spill into the next tax year, or use Shubhi's allowance via a spouse transfer, if needed); keep total ISA subscriptions under £20,000 a tax year; move the biggest expected future gains first; sell and rebuy on the same day (or buy in the ISA first if cash allows) to limit time out of the market; record every sale in the realized-gains log.
+
+## ISA allowance tracker 2026/27 (Revolut ISA)
+Subscriptions since 6 April 2026: [to confirm with Praveg on the October run] + monthly contributions + consolidation deposits. Limit £20,000.
 
 ## Holdings as of 2026-09-20
 **eToro £4,785.85** (39 positions, £2.66 cash, invested £4,087.58, P/L +£695.61)

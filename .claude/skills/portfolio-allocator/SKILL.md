@@ -128,6 +128,8 @@ Decide what each slot of this month's budget must do, using in priority order:
 3. **Diagnostics:** fragility or gaps found in Phase 5 (e.g. no fixed income in a rate shock, concentration in one theme).
 4. **Opportunities:** `ADD` verdicts from Phase 6 and tactical tilts from Phase 4, within bands.
 
+If the profile sets a **consolidation goal** (moving holdings into one ISA over several months), also plan this month's tranche as `references/uk-tax-and-wrappers.md` (Multi-month consolidation) describes. Tranche orders are separate from the slot plan and don't use the monthly budget.
+
 Write a slot plan, for example: "ISA: 3 core top-ups, 2 quality large-caps (one new, one top-up), 2 ETFs for the defensive gap, 1 satellite; eToro: 1 new shot, 1 follow-on." Honour the user's large-cap/ETF split; within it, the plan decides new vs top-up. Say plainly if the plan departs from what the user might expect, and why.
 
 ### Phase 8: Candidate generation and screening

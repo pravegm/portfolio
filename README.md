@@ -66,7 +66,9 @@ You don't need eToro. Everything, including your two micro-caps a month, runs on
 
 ## Praveg
 
-Ongoing since April 2026 (history imported from earlier runs). The October run starts with a short round to confirm the proposed investment policy and financial foundations in [`portfolios/praveg/profile.md`](portfolios/praveg/profile.md), then runs as usual.
+Ongoing since April 2026 (history imported from earlier runs). The October run starts with a short round to confirm the proposed investment policy and financial foundations in [`portfolios/praveg/profile.md`](portfolios/praveg/profile.md).
+
+**Consolidating into the Revolut ISA:** from October, all new money (including the micro-caps) goes to the Revolut ISA. Existing eToro holdings move across in monthly tranches (sell on eToro, rebuy in the ISA), sized so each tax year's gains stay within the £3,000 capital gains allowance. Each report shows progress and that month's tranche orders. Crypto, the AI-Revolution copy portfolio and anything Revolut doesn't offer are decided case by case.
 
 ---
 

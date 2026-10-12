@@ -69,6 +69,16 @@ When a profile or history asks for it, build a migration plan in the report:
 6. **Mechanics:** sell in the GIA, withdraw or transfer cash, deposit into the ISA, rebuy the same day. Limit orders for small caps. Some platforms offer a bed-and-ISA service that does this in one step; check before doing it manually. Record every sale in the realized-gains log.
 7. Note the trade-off plainly: losses inside an ISA can't be used against gains.
 
+### Multi-month consolidation
+
+If a profile sets a consolidation goal (moving everything into one ISA over several months), the history file holds a consolidation plan table and an ISA allowance tracker. Every run:
+1. Reconcile the table with the holdings and trade history: mark completed moves DONE with dates and realized gains or losses.
+2. Size **this month's tranche**: within the remaining CGT exempt amount for the tax year (after realized gains so far), within the remaining ISA allowance, and at a pace the user can execute (a handful of lines a month). Move the biggest expected future gains first; lines classified EXIT are simply sold.
+3. Re-check the classification: a line that would not be bought today becomes EXIT rather than MOVE.
+4. List the tranche orders in their own table (sell on the old platform, deposit, rebuy in the ISA), separate from the month's slot orders, with the CGT and allowance running totals.
+5. Give one CHECK list of tickers whose availability in the target ISA must be confirmed in its app.
+6. Update the table, the realized-gains log and the allowance tracker; say how many lines and £ remain and the expected finish month.
+
 ## Withholding tax
 
 - US dividends: 15% US withholding with a W-8BEN on file (30% without). Check the W-8BEN is in place on each platform. Inside an ISA the 15% can't be reclaimed.

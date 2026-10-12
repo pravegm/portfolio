@@ -2,11 +2,18 @@
 
 ## Monthly budget
 - £1,000 a month in total
-- £200 to eToro: 2 micro-cap slots at £100 each
+- £200 to the venture sleeve: 2 micro-cap slots at £100 each (new buys go in the Revolut ISA; see consolidation below)
 - £800 to the ISA: large-caps and ETFs, at £100 per slot
 - Ask every run how many ISA slots go to large-caps vs ETFs. Never assume.
 
-## Micro-cap moonshot portfolio (eToro)
+## Consolidation goal (set 2026-10-12): everything into the Revolut ISA
+- **End state:** one account, the Revolut Stocks & Shares ISA, holding the core, the quality large-caps, the ETFs and the venture sleeve.
+- **New money:** from the October 2026 run, all £1,000 a month goes to the Revolut ISA, including the 2 micro-cap slots. No new deposits to eToro (confirm on the October run).
+- **Existing eToro holdings:** moved gradually by bed-and-ISA (sell on eToro, rebuy in the Revolut ISA) in monthly tranches, following the consolidation plan in `portfolio-allocator-history.md` and the method in `.claude/skills/portfolio-allocator/references/uk-tax-and-wrappers.md`. Target: finished within the 2026/27 tax year if the CGT and ISA allowances allow, otherwise early 2027/28.
+- **Can't go in an ISA; decide case by case on the October run:** crypto (BTC, SOL, BNB: keep on eToro, sell, or move to Revolut's crypto account; selling or moving is a CGT disposal), the AI-Revolution copy portfolio (a standing decision says keep it; consolidating means either keeping eToro open just for it or exiting it), PSTX.CVR (can't be sold; stays until it pays out or expires), and any listing Revolut doesn't offer (likely the Oslo, Stockholm and Hong Kong lines: MEDI.OL, BIOGb.ST, 01211.HK, 9866.HK).
+- **Revolut availability can't be checked automatically** (Revolut blocks automated access and has no API). Each month, give a single CHECK list of tickers for Praveg to search in the Revolut app.
+
+## Micro-cap venture sleeve (moving from eToro to the Revolut ISA)
 - £100 per stock, 2 additions per month (£200)
 - Venture-style, 10-year+ horizon
 - Aggressive risk posture: optimize for 10x+ potential, accept high failure rate
@@ -14,7 +21,7 @@
 - Existing positions include speculative names like INOD, EVLV, MEDI.OL, BIOGb.ST (verify against latest screenshot each run)
 
 ## ISA portfolio (Revolut Stocks & Shares ISA)
-- Revolut plan: **Ultra**: 10 commission-free trades a month; beyond that 0.12% per order. The 8 monthly ISA buys fit inside the free allowance, leaving 2 spare for any sells or rebalancing; flag it if a month's plan needs more than 10 orders.
+- Revolut plan: **Ultra**: 10 commission-free trades a month; beyond that 0.12% per order (about 12p per £100). The 8 ISA slots plus the 2 micro-cap slots use all 10; consolidation rebuys cost 0.12% each, which is acceptable.
 - £800 a month
 - Long-term wealth building
 - Mix of large-caps and ETFs (split decided per run)
