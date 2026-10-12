@@ -37,7 +37,7 @@ Create any missing file on the run that first needs it (templates in `references
 - `references/uk-tax-and-wrappers.md`: ISA and GIA rules, CGT, dividends, spouse transfers, bed-and-ISA, asset location, withholding tax, stamp duty, platform costs, tax-year checklist.
 - `references/research-methods.md`: evidence standards, materiality tiers, deep-dive checks by asset type, micro-cap gates, red team, entry-point rubric.
 - `references/stock-selection.md`: the selection funnel, idea sources, screen recipes, scoring rubrics, how to read analyst ratings, insider/institutional/short signals, forensic scores, valuation by company type, sector KPIs, timing.
-- `references/data-sources.md`: the data access check, the Alpha Vantage budget, the source map by need, source reliability tiers, and what to ask the user for.
+- `references/data-sources.md`: the data access check, the helper scripts, the Alpha Vantage budget, the source map by need, source reliability tiers, and what to ask the user for.
 - `references/report-template.md`: the report, history, thesis register and scorecard templates.
 
 ## Workflow
@@ -50,7 +50,7 @@ If a subagent tool is available, research holdings and candidates in parallel ba
 
 1. Ask who is running this (folder names under `portfolios/`) unless they already said so. Read their `profile.md`.
 2. `git fetch origin main` and make sure the working branch includes it, so the latest files are used.
-3. **Data access check** (`references/data-sources.md`): confirm which of web search, page fetch, the Alpha Vantage tools and user-supplied data work in this session, and plan research around them. If direct fetching is blocked, tell the user once in one line and carry on.
+3. **Data access check** (`references/data-sources.md`): run `scripts/check_access.sh` and plan research around what works. Use the helper scripts in `scripts/` (prices, Finviz quotes and screens, SEC filings, earnings calendar, page text) for reachable sources, web search for the rest, Alpha Vantage as a backup. If an important source is blocked, tell the user once in one line and carry on.
 4. If the profile is a blank template, or any section is marked **PROPOSED** or "confirm on first run", settle it with the user before Phase 1 (one short round of questions, recommended defaults offered). Save the answers to `profile.md`, remove the PROPOSED marker, and set "Policy last reviewed".
 5. **Annual review.** If "Policy last reviewed" is over 12 months old, or this is the first run in March or April since it was last reviewed (UK tax year ends 5 April), also re-confirm the policy and financial foundations and run the tax-year checklist in `references/uk-tax-and-wrappers.md`.
 
@@ -74,7 +74,7 @@ Load the history, thesis register and scorecard.
 
 ### Phase 3: Scorecard (the learning loop)
 
-Before any new research, update `scorecard.md`: for every past pick and top-up, return since entry versus the benchmark over the same period (benchmarks are in the profile). From it, compute hit rate, average excess return, and which kinds of picks have worked (e.g. de-rated quality vs momentum, themes, top-ups vs new names). Be explicit where entry prices are estimated.
+Before any new research, update `scorecard.md`: for every past pick and top-up, return since entry versus the benchmark over the same period (benchmarks are in the profile). Use `scripts/prices.py` for exact closes on the entry date and today, for the pick, the benchmark and GBPUSD. From it, compute hit rate, average excess return, and which kinds of picks have worked (e.g. de-rated quality vs momentum, themes, top-ups vs new names). Be explicit where entry prices are estimated.
 
 Use the results: if a category of pick keeps losing to its benchmark, raise its bar this month and say so in the report. If the ISA satellites as a whole trail the core tracker, that argues for more slots into the core.
 
@@ -83,7 +83,7 @@ Use the results: if a category of pick keeps losing to its benchmark, raise its 
 Research what moved markets since the last run, from current data only, with dates and sources:
 - Rates, central banks, inflation, jobs; energy and commodities; equities and sector rotation; crypto; regions (US, UK, Europe, Japan, EM) with earnings expectations and positioning; the hottest trades and whether the asymmetry is still there; GBP/USD.
 
-Then build the **next 30-45 days calendar** for this portfolio: earnings dates for holdings and candidates, FOMC and Bank of England meetings, CPI prints, drug approval (PDUFA) dates and trial readouts, lock-up expiries, index rebalances, ex-dividend dates, and UK tax-year deadlines.
+Then build the **next 30-45 days calendar** for this portfolio (`scripts/earnings_calendar.py` for US earnings dates): earnings dates for holdings and candidates, FOMC and Bank of England meetings, CPI prints, drug approval (PDUFA) dates and trial readouts, lock-up expiries, index rebalances, ex-dividend dates, and UK tax-year deadlines.
 
 Classify each development as **regime-level** (changes the policy's tilts), **portfolio-level** (changes a holding's thesis), or **noise**. Monthly news should only move tactical tilts within policy bands. If the regime has genuinely changed, say so first.
 
@@ -101,7 +101,7 @@ Run the diagnostics in `references/wealth-management-framework.md` and produce a
 
 ### Phase 6: Holding review
 
-Research every holding, tiered by materiality so effort goes where money is:
+Research every holding, tiered by materiality so effort goes where money is. Start with `scripts/finviz.py quote` for all US-listed holdings (one call gives valuation, growth, ownership, short interest, trend and analyst data) and `scripts/sec_filings.py` for Tier 1 US names:
 - **Tier 1 (deep):** positions over 3% of their portfolio, anything that moved more than 20% since last run, anything with a calendar event in the next 45 days, anything near a kill criterion, and every candidate for a top-up or exit.
 - **Tier 2 (sweep):** everything else gets a news, filings and earnings check.
 
@@ -128,7 +128,7 @@ Write a slot plan, for example: "ISA: 3 core top-ups, 2 quality large-caps (one 
 
 ### Phase 8: Candidate generation and screening
 
-Generate candidates only for slots the plan says need a new name or a choice between holdings. Run the funnel in `references/stock-selection.md`: wide idea generation from its idea sources and screen recipes (20-40 names per slot type), hard gates, rubric scoring, then deep research on the top ~3x the number of such slots. Record every name that reached scoring and why it stopped.
+Generate candidates only for slots the plan says need a new name or a choice between holdings. Run the funnel in `references/stock-selection.md`: wide idea generation from its idea sources and screen recipes (`scripts/finviz.py preset ...` runs them; 20-40 names per slot type), hard gates, rubric scoring, then deep research on the top ~3x the number of such slots. Record every name that reached scoring and why it stopped.
 
 **Micro-cap sleeve (eToro):** apply the screen in `references/research-methods.md` (market-cap band, liquidity, exchange, cash runway, dilution, insider activity, quality). A 10x+ path must be articulable: capped downside (cash, real revenue, real product, strategic value) and uncapped upside (TAM, moat formation, optionality). Avoid meme names and buying after a huge run into a binary catalyst. Respect themes the history marks as fully allocated. Follow-ons go to holdings whose operating numbers are proving the thesis, not by default to the biggest losers.
 

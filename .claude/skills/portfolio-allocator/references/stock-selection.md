@@ -38,7 +38,7 @@ Record every name that reached step 3 and why it stopped. That list feeds the hi
 
 ## Screen recipes
 
-Filters are described in words so they can be built in Finviz, Koyfin, TradingView or stockanalysis.com, or approximated by search. If the user has a screener, ask them to run the recipe and paste or export the results.
+Recipes A to E are available as presets in `scripts/finviz.py` (`microcap-quality-growth`, `microcap-insider-buying`, `quality-on-sale`, `large-earnings-momentum`, `biotech-cash-runway`); the preset filters approximate the words below, so apply the remaining criteria by hand. Finviz covers US listings only: for UK and European names use web search or ask the user to run Stockopedia, SharePad, Koyfin or TradingView. Adjust or combine Finviz filter codes with `finviz.py screen` when a slot needs something different.
 
 **A. Micro-cap quality growth**
 - Market cap $50M to $2B; listed on NYSE or Nasdaq (or LSE/AIM for UK names)

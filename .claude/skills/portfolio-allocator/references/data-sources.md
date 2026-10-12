@@ -4,28 +4,54 @@ Where to get each kind of data, how to reach it from the session, and what to do
 
 ## 1. Data access check (Phase 0)
 
-What a session can reach depends on its environment. Check once at the start of each run and note the result in working notes:
+What a session can reach depends on its environment's network settings. At the start of each run:
 
-1. **Web search**: run one search for a holding's latest earnings. This is the default research channel and normally works.
-2. **Page fetch**: fetch one page (e.g. a stockanalysis.com quote page). In the cloud environment checked in October 2026, direct fetches and `curl` to finance sites were blocked by the environment's network policy, so research ran through web search only.
-3. **Alpha Vantage MCP** (tools named `mcp__Alpha_Vantage_MCP_Server__*`, if connected): call `GLOBAL_QUOTE` for one ticker. On the free key: 25 requests a day, at most 1 per second; `GLOBAL_QUOTE`, time series, `INSIDER_TRANSACTIONS` and macro series worked; `COMPANY_OVERVIEW` returned "premium endpoint". Call tools one at a time, never in parallel.
-4. **User-supplied data**: broker CSV exports, screenshots, screener exports or pages the user pastes. Always usable.
+1. Run `bash .claude/skills/portfolio-allocator/scripts/check_access.sh`. `200`/`301` means reachable; `000` means blocked by the network policy or refused by the site.
+2. Use the **helper scripts** (section 1a) for every reachable source. They fetch through the session proxy with `curl`. The built-in WebFetch tool does **not** go through that proxy and failed for every finance site in testing, so don't rely on it.
+3. **Web search** covers everything else (news, analyst commentary, pages on blocked hosts).
+4. **Alpha Vantage MCP** (tools named `mcp__Alpha_Vantage_MCP_Server__*`, if connected) is a backup; see the budget below.
+5. **User-supplied data** (broker CSV exports, screenshots, pasted pages) is always usable.
 
-If fetch is blocked, tell the user once, in one line, that research is search-based and that adding the domains in section 4 to the environment's allowed domains (cloud environment settings, Network access) would let runs read primary pages directly. Then carry on. Never fill a gap with invented numbers; list it under evidence gaps.
+If an important source is blocked, tell the user once, in one line, which host and that it can be added under the environment's allowed domains (section 4). Never fill a gap with invented numbers; list it under evidence gaps.
+
+Status in October 2026 after the allowed domains were added: reachable: stockanalysis.com, finviz.com, Yahoo Finance chart API, SEC (www.sec.gov, data.sec.gov, efts.sec.gov), api.nasdaq.com, companiesmarketcap.com, clinicaltrials.gov. Still blocked: hosts that need the `www.` form allowed (justetf, ishares, marketbeat, tipranks, zacks, macrotrends, morningstar.co.uk, londonstockexchange, investegate, bankofengland, federalreserve, gov.uk, coingecko, biopharmcatalyst, etoro, trading212, revolut). Refused by the site itself: openinsider.com, fred.stlouisfed.org (use SEC Form 4s and Yahoo/Alpha Vantage instead).
+
+## 1a. Helper scripts
+
+In `.claude/skills/portfolio-allocator/scripts/`, run with `python3 -I <script>`:
+
+| Script | What it gives | Use in |
+|---|---|---|
+| `prices.py SYMBOLS --from DATE [--to DATE]` | Daily closes and return over a window from Yahoo (US tickers, `VWRP.L` for LSE, `.OL`, `.ST`, `.HK`, `GBPUSD=X`, `^RUT`, `^GSPC`, `^TNX`, `BTC-USD`) | Scorecard (pick vs benchmark since entry), dated prices in the report, 52-week context |
+| `finviz.py quote TICKERS` | Snapshot: market cap, EV, P/E, forward P/E, EV/sales, margins, ROIC, cash/share, debt, insider and institutional ownership and transactions, short float, SMA distances, performance, analyst recommendation and target, next earnings date | Phase 6 holding review, Phase 8 candidate facts |
+| `finviz.py preset NAME` / `finviz.py screen FILTERS` | Screen results (US-listed). Presets match the recipes in `stock-selection.md`: `microcap-quality-growth`, `microcap-insider-buying`, `quality-on-sale`, `large-earnings-momentum`, `biotech-cash-runway` | Phase 8 idea generation |
+| `sec_filings.py TICKER --forms 4,144,8-K,S-3,424B5` | Recent SEC filings with links | Insider trades, dilution, material events |
+| `fetch_text.py URL --find WORD` | Readable text from any reachable page, around a keyword | stockanalysis forecast/statistics pages, SEC filing documents, ClinicalTrials.gov API, Nasdaq API |
+| `earnings_calendar.py TICKERS --days 45` | Upcoming US earnings dates with EPS estimates | Phase 4 calendar |
+| `check_access.sh` | Which source hosts are reachable | Phase 0 |
+
+Useful pages for `fetch_text.py`:
+- `https://stockanalysis.com/stocks/<ticker>/forecast/` (analyst count, consensus, target low/average/high, estimates) with `--find "price target"`
+- `https://stockanalysis.com/stocks/<ticker>/statistics/` (valuation, share count change, margins, short interest) with `--find "Shares"`
+- `https://stockanalysis.com/stocks/<ticker>/financials/?p=quarterly` (quarterly income statement)
+- `https://stockanalysis.com/etf/<ticker>/holdings/` (US ETF holdings, for look-through when UCITS factsheets are blocked)
+- `https://clinicaltrials.gov/api/v2/studies?query.term=<drug or company>` (trial status and dates)
+
+Returns in GBP for a USD asset: `(1 + r_usd) x (GBPUSD at start / GBPUSD at end) - 1`; get both FX closes from `prices.py GBPUSD=X`.
+
+SEC asks automated requests to declare a contact in the User-Agent. The scripts send a neutral placeholder; set the environment variable `SEC_USER_AGENT` to a real contact only if the user asks for that.
 
 ### Alpha Vantage budget (free key, 25 calls/day)
 
-Spend calls where search is weakest:
-- Live quotes (`GLOBAL_QUOTE`) for the Tier 1 holdings and the finalists, so prices in the report are exact and dated
-- `INSIDER_TRANSACTIONS` for micro-cap finalists (cross-check with search; an empty result may mean no coverage, not no trades)
-- `EARNINGS_ESTIMATES` (revision history) and `ETF_PROFILE` (holdings, for look-through) where available
-- Macro series (`TREASURY_YIELD`, `FEDERAL_FUNDS_RATE`, `CPI`, `FX_DAILY` for GBP/USD) only if search results are stale
-
-Note which figures came from Alpha Vantage, with the "latest trading day" it reports.
+Free key limits: 25 requests a day, at most 1 per second; `COMPANY_OVERVIEW` returned "premium endpoint" in testing. Call tools one at a time, never in parallel. Since Yahoo and Finviz now cover prices and snapshots, keep Alpha Vantage for:
+- `EARNINGS_ESTIMATES` (revision history) for finalists
+- `ETF_PROFILE` (holdings) for look-through when issuer pages are blocked
+- `INSIDER_TRANSACTIONS` as a cross-check (an empty result may mean no coverage, not no trades)
+- Macro series if needed
 
 ## 2. Source map by need
 
-When fetch is blocked, reach these through web search, including the site name in the query (e.g. `CRDO stockanalysis forecast`, `CRDO insider trading openinsider`, `IWDA justETF`). Prefer results that show a date.
+Use the helper scripts for reachable hosts. For blocked hosts, reach these through web search, including the site name in the query (e.g. `CRDO stockanalysis forecast`, `CRDO insider trading openinsider`, `IWDA justETF`). Prefer results that show a date.
 
 | Need | Best sources | Notes |
 |---|---|---|
@@ -59,18 +85,17 @@ A verdict needs Tier A or two independent Tier B sources. Tier C can generate id
 
 ## 4. Domains to allow for direct fetching
 
-If the user wants runs to read primary pages directly, these are the domains worth adding to the environment's allowed domains:
+Allowed domains match exact hostnames, so most sites need both the bare and the `www.` form. To unlock the remaining sources, add:
 
 ```
-stockanalysis.com, finviz.com, finance.yahoo.com, query1.finance.yahoo.com,
-sec.gov, www.sec.gov, efts.sec.gov, data.sec.gov, openinsider.com,
-marketbeat.com, tipranks.com, zacks.com, macrotrends.net, companiesmarketcap.com,
-nasdaq.com, api.nasdaq.com, justetf.com, ishares.com, vanguardinvestor.co.uk,
-morningstar.co.uk, fred.stlouisfed.org, cmegroup.com, federalreserve.gov,
-bankofengland.co.uk, ons.gov.uk, gov.uk, londonstockexchange.com, investegate.co.uk,
-clinicaltrials.gov, biopharmcatalyst.com, coingecko.com,
-etoro.com, trading212.com, revolut.com
+www.justetf.com, www.ishares.com, www.vanguardinvestor.co.uk, www.morningstar.co.uk,
+www.marketbeat.com, www.tipranks.com, www.zacks.com, www.macrotrends.net,
+www.nasdaq.com, www.londonstockexchange.com, www.investegate.co.uk,
+www.bankofengland.co.uk, www.federalreserve.gov, www.ons.gov.uk, www.gov.uk,
+www.coingecko.com, www.biopharmcatalyst.com, www.etoro.com, www.trading212.com, www.revolut.com
 ```
+
+Already allowed (October 2026): stockanalysis.com, finviz.com, finance.yahoo.com, query1.finance.yahoo.com, sec.gov, www.sec.gov, efts.sec.gov, data.sec.gov, api.nasdaq.com, companiesmarketcap.com, clinicaltrials.gov, and the bare forms of the hosts above.
 
 ## 5. Asking the user for data
 
