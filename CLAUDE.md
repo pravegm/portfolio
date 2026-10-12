@@ -7,8 +7,10 @@ This repo is the shared home for the `portfolio-allocator` skill (`.claude/skill
 ```
 portfolios/
   praveg/
-    profile.md                        # portfolios, brokers, strategy
-    portfolio-allocator-history.md    # run history (holdings, picks, rejections)
+    profile.md                        # portfolios, brokers, budget, investment policy, financial foundations
+    portfolio-allocator-history.md    # run history (holdings, picks, rejections, lessons, realized gains)
+    thesis-register.md                # thesis, kill criteria, next catalyst per holding (created on first run)
+    scorecard.md                      # every pick vs benchmark (created on first run)
     allocations/                      # one portfolio-allocation-YYYY-MM-DD.md per run
   shubhi/
     (same structure)
