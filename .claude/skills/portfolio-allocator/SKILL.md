@@ -1,28 +1,21 @@
 ---
 name: portfolio-allocator
-description: Run the user's monthly investment allocation workflow across two portfolios — a high-risk micro-cap moonshot portfolio on eToro and a long-term ISA portfolio (large-caps + ETFs) on Revolut. Takes portfolio screenshots, researches current holdings exhaustively, then produces a ranked list of new picks with rationale and entry-point reasoning. Trigger this skill whenever the user mentions adding to their portfolio, picking new stocks, monthly investing, "what should I buy this month", "topping up", "what to add to eToro/ISA/Revolut", running their monthly allocation, or any phrasing that suggests choosing new investments. Trigger aggressively — even casual phrasing like "time to invest again" or "help me pick stocks" should pull this in. Do NOT trigger for one-off stock research without portfolio context, or for portfolio review without an intent to add new positions.
+description: Run the monthly investment allocation workflow for one of the people who share this repo (each has their own profile, history and portfolios under portfolios/<name>/; e.g. a high-risk micro-cap moonshot portfolio on eToro and a long-term ISA portfolio of large-caps + ETFs on Revolut). Takes portfolio screenshots, researches current holdings exhaustively, then produces a ranked list of new picks with rationale and entry-point reasoning. Trigger this skill whenever the user mentions adding to their portfolio, picking new stocks, monthly investing, "what should I buy this month", "topping up", "what to add to eToro/ISA/Revolut", running their monthly allocation, or any phrasing that suggests choosing new investments. Trigger aggressively — even casual phrasing like "time to invest again" or "help me pick stocks" should pull this in. Do NOT trigger for one-off stock research without portfolio context, or for portfolio review without an intent to add new positions.
 ---
 
 # Portfolio Allocator
 
-Monthly allocation workflow for the user's two-portfolio strategy. The non-negotiable principle: **research is exhaustive before any recommendation lands**. A weak recommendation is worse than no recommendation.
+Monthly allocation workflow for the user's portfolios, as described in their profile. The non-negotiable principle: **research is exhaustive before any recommendation lands**. A weak recommendation is worse than no recommendation.
 
 ## Portfolio context
 
-The user runs two distinct strategies:
+This skill is shared by more than one person. Each person has their own folder under `portfolios/<name>/` at the repo root:
 
-**Micro-cap moonshot portfolio (eToro)**
-- £100 per stock, ~2 additions per month
-- Venture-style, 10-year+ horizon
-- Aggressive risk posture: optimize for 10x+ potential, accept high failure rate
-- Themes historically: crypto adjacencies, EV/battery, AI infrastructure, biotech
-- Existing positions include speculative names like INOD, EVLV, MEDI.OL, BIOGb.ST (verify against latest screenshot each run)
+- `profile.md`: their portfolios, brokers, strategies and risk posture. This is the portfolio context for the run.
+- `portfolio-allocator-history.md`: their run history.
+- `allocations/`: their past allocation reports.
 
-**ISA portfolio (Revolut)**
-- Monthly contributions
-- Long-term wealth building
-- Mix of large-caps and ETFs (split decided per run)
-- Lower risk, compounding focus
+Never mix one person's holdings, history or picks into another person's run.
 
 **Broker availability is a hard constraint.** Picks that aren't tradeable on the relevant platform are useless. Verify every recommendation.
 
@@ -30,10 +23,18 @@ The user runs two distinct strategies:
 
 Run these phases in order. Do not skip ahead even if the user seems impatient — the value of this skill is the rigor.
 
+The phases below use the micro-cap moonshot (eToro) and ISA (Revolut) setup as the worked example. If the user's profile lists different portfolios or brokers, apply the same steps, rigor and output structure to their portfolios instead.
+
+### Phase 0: Identify the user
+
+Ask who is running this (the folder names under `portfolios/` are the options) unless they have already said so in the conversation. Then read `portfolios/<name>/profile.md`.
+
+If the profile is still a blank template, fill it in with the user before Phase 1: which portfolios they have, the broker for each, the strategy and horizon, the typical amount per position and additions per month, risk posture, and any themes. Save it to their `profile.md`.
+
 ### Phase 1: Intake
 
 Ask the user for:
-1. Screenshots of both portfolios (current positions, sizes, P&L if visible)
+1. Screenshots of each of their portfolios (current positions, sizes, P&L if visible)
 2. How many new products they want to add to each portfolio this run
 3. For ISA only: the ETF/large-cap split they want this month
 4. Any specific themes, sectors, or stocks already on their radar (optional but useful)
@@ -43,7 +44,7 @@ Wait for all of this before proceeding. Do not start research with partial input
 ### Phase 2: History check
 
 Before researching new picks, load the run history if it exists:
-- Check for `portfolio-allocator-history.md` in the working directory or attached files
+- Check for `portfolios/<name>/portfolio-allocator-history.md`, or a history file the user attached
 - If it exists, parse it for: current holdings, previously rejected picks, previously considered-but-not-picked candidates, and any conviction notes
 - If it doesn't exist, this is the first run — note that and proceed
 
@@ -105,7 +106,7 @@ If the user requested 2 picks but only 1 candidate clears the rigor bar, **say s
 
 ### Phase 6: Output
 
-Produce a single markdown file: `portfolio-allocation-YYYY-MM-DD.md`. Use this structure:
+Produce a single markdown file: `portfolios/<name>/allocations/portfolio-allocation-YYYY-MM-DD.md`. Use this structure:
 
 ```markdown
 # Portfolio Allocation — [Month YYYY]
@@ -137,7 +138,7 @@ Keep the rationale tight. The user wants picks plus rationale, not a research lo
 
 ### Phase 7: Update history
 
-After producing the deliverable, update (or create) `portfolio-allocator-history.md`:
+After producing the deliverable, update (or create) `portfolios/<name>/portfolio-allocator-history.md`:
 
 ```markdown
 # Portfolio Allocator History
