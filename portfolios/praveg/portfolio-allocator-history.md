@@ -38,6 +38,7 @@ Evidence: ACMR beat (EPS $0.61 vs $0.42), guidance raised, orders +105% — fell
 
 ## September actions
 **EXIT:** ENVX (£27.80 — ONLY genuine thesis break: flagship still pre-revenue, cycle-life test slipped to end-2026, Fab2 yields mid-80%, >$30M/qtr burn vs $9M/qtr revenue). PSTX.CVR (£0.01).
+**PSTX.CVR: CANNOT BE CLOSED. Do NOT recommend closing it again.** Tried 2026-10-12: eToro rejected the close ("the instrument does not allow closing positions"). It is the contingent value right from Roche's acquisition of Poseida (received Jan 2025, $0 invested); it pays cash only if milestones are met, otherwise expires worthless. Leave it; it drops off by itself.
 **AI-Revolution £861.74 (18% of eToro): USER HAS DECIDED TO KEEP IT. Do NOT recommend trimming again.** Rationale recorded once: opaque basket, likely overlaps ACMR/CRDO/INOD held directly. Practical consequence: treat AI as fully allocated and avoid adding more AI exposure elsewhere. Only revisit if weight rises materially or the underlying changes.
 **WATCH SIZE:** RIOT +120.7% £209.48, now 2nd-largest single stock; Anthropic deal + crypto rally; consensus PT $29.66 vs $23.75.
 **ADD:** CRDO (record Q1, 85%+ growth guided, Strong Buy $282 = +63%, ~42% below fair value; ⚠️ $465M insider selling, zero buys). CRSP (CASGEVY +151% YoY, FDA to age 2, $2.44B cash).
