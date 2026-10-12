@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Data access check for Phase 0: prints HTTP status per source host.
-# 200/301/302 = reachable; 000 = blocked by network policy or refused upstream.
+# 200/301/302 = reachable; 403 = the site's bot protection (use web search);
+# 000 = blocked by the network policy (add the host to allowed domains) or refused by the site.
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36"
 for u in \
   https://stockanalysis.com/ https://finviz.com/ https://query1.finance.yahoo.com/v8/finance/chart/SPY \

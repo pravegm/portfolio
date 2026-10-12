@@ -14,7 +14,7 @@ What a session can reach depends on its environment's network settings. At the s
 
 If an important source is blocked, tell the user once, in one line, which host and that it can be added under the environment's allowed domains (section 4). Never fill a gap with invented numbers; list it under evidence gaps.
 
-Status in October 2026 after the allowed domains were added: reachable: stockanalysis.com, finviz.com, Yahoo Finance chart API, SEC (www.sec.gov, data.sec.gov, efts.sec.gov), api.nasdaq.com, companiesmarketcap.com, clinicaltrials.gov. Still blocked: hosts that need the `www.` form allowed (justetf, ishares, marketbeat, tipranks, zacks, macrotrends, morningstar.co.uk, londonstockexchange, investegate, bankofengland, federalreserve, gov.uk, coingecko, biopharmcatalyst, etoro, trading212, revolut). Refused by the site itself: openinsider.com, fred.stlouisfed.org (use SEC Form 4s and Yahoo/Alpha Vantage instead).
+Status in October 2026 (all domains in section 4 allowed): reachable through the scripts: stockanalysis.com, finviz.com, Yahoo Finance chart API, SEC (www.sec.gov, data.sec.gov, efts.sec.gov), api.nasdaq.com, companiesmarketcap.com, clinicaltrials.gov, justETF, iShares, MarketBeat, Zacks, Morningstar UK, London Stock Exchange, Investegate (RNS), Bank of England, Federal Reserve, GOV.UK, BioPharmCatalyst, eToro. Blocked by the site's own bot protection (Cloudflare challenge; use web search instead): TipRanks, Macrotrends, CoinGecko, Trading 212, Revolut. Refused by the site: openinsider.com, fred.stlouisfed.org (use SEC Form 4s and Yahoo/Alpha Vantage instead).
 
 ## 1a. Helper scripts
 
@@ -28,7 +28,7 @@ In `.claude/skills/portfolio-allocator/scripts/`, run with `python3 -I <script>`
 | `sec_filings.py TICKER --forms 4,144,8-K,S-3,424B5` | Recent SEC filings with links | Insider trades, dilution, material events |
 | `fetch_text.py URL --find WORD` | Readable text from any reachable page, around a keyword | stockanalysis forecast/statistics pages, SEC filing documents, ClinicalTrials.gov API, Nasdaq API |
 | `earnings_calendar.py TICKERS --days 45` | Upcoming US earnings dates with EPS estimates | Phase 4 calendar |
-| `check_access.sh` | Which source hosts are reachable | Phase 0 |
+| `check_access.sh` | Which source hosts are reachable (`403` with a page = the site's bot protection; `000` = network policy or refused) | Phase 0 |
 
 Useful pages for `fetch_text.py`:
 - `https://stockanalysis.com/stocks/<ticker>/forecast/` (analyst count, consensus, target low/average/high, estimates) with `--find "price target"`
@@ -85,17 +85,24 @@ A verdict needs Tier A or two independent Tier B sources. Tier C can generate id
 
 ## 4. Domains to allow for direct fetching
 
-Allowed domains match exact hostnames, so most sites need both the bare and the `www.` form. To unlock the remaining sources, add:
+Allowed domains match exact hostnames, so sites need both the bare and the `www.` form. The full list in use (October 2026):
 
 ```
-www.justetf.com, www.ishares.com, www.vanguardinvestor.co.uk, www.morningstar.co.uk,
-www.marketbeat.com, www.tipranks.com, www.zacks.com, www.macrotrends.net,
-www.nasdaq.com, www.londonstockexchange.com, www.investegate.co.uk,
-www.bankofengland.co.uk, www.federalreserve.gov, www.ons.gov.uk, www.gov.uk,
-www.coingecko.com, www.biopharmcatalyst.com, www.etoro.com, www.trading212.com, www.revolut.com
+stockanalysis.com, finviz.com, finance.yahoo.com, query1.finance.yahoo.com,
+sec.gov, www.sec.gov, efts.sec.gov, data.sec.gov, api.nasdaq.com, nasdaq.com, www.nasdaq.com,
+companiesmarketcap.com, clinicaltrials.gov, justetf.com, www.justetf.com,
+ishares.com, www.ishares.com, vanguardinvestor.co.uk, www.vanguardinvestor.co.uk,
+morningstar.co.uk, www.morningstar.co.uk, marketbeat.com, www.marketbeat.com,
+zacks.com, www.zacks.com, tipranks.com, www.tipranks.com, macrotrends.net, www.macrotrends.net,
+londonstockexchange.com, www.londonstockexchange.com, investegate.co.uk, www.investegate.co.uk,
+bankofengland.co.uk, www.bankofengland.co.uk, federalreserve.gov, www.federalreserve.gov,
+ons.gov.uk, www.ons.gov.uk, gov.uk, www.gov.uk, coingecko.com, www.coingecko.com,
+biopharmcatalyst.com, www.biopharmcatalyst.com, etoro.com, www.etoro.com,
+trading212.com, www.trading212.com, revolut.com, www.revolut.com,
+fred.stlouisfed.org, cmegroup.com, openinsider.com
 ```
 
-Already allowed (October 2026): stockanalysis.com, finviz.com, finance.yahoo.com, query1.finance.yahoo.com, sec.gov, www.sec.gov, efts.sec.gov, data.sec.gov, api.nasdaq.com, companiesmarketcap.com, clinicaltrials.gov, and the bare forms of the hosts above.
+Anyone else running the skill from their own environment (e.g. Shubhi) needs the same list.
 
 ## 5. Asking the user for data
 
