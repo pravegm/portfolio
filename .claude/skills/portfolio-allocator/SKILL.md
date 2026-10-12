@@ -39,6 +39,7 @@ Create any missing file on the run that first needs it (templates in `references
 - `references/stock-selection.md`: the selection funnel, idea sources, screen recipes, scoring rubrics, how to read analyst ratings, insider/institutional/short signals, forensic scores, valuation by company type, sector KPIs, timing.
 - `references/data-sources.md`: the data access check, the helper scripts, the Alpha Vantage budget, the source map by need, source reliability tiers, and what to ask the user for.
 - `references/report-template.md`: the report, history, thesis register and scorecard templates.
+- `references/onboarding.md`: a person's first run: the one-round onboarding questions, files to create, and what changes in each phase.
 
 ## Workflow
 
@@ -51,7 +52,7 @@ If a subagent tool is available, research holdings and candidates in parallel ba
 1. Ask who is running this (folder names under `portfolios/`) unless they already said so. Read their `profile.md`.
 2. `git fetch origin main` and make sure the working branch includes it, so the latest files are used.
 3. **Data access check** (`references/data-sources.md`): run `scripts/check_access.sh` and plan research around what works. Use the helper scripts in `scripts/` (prices, Finviz quotes and screens, SEC filings, earnings calendar, page text) for reachable sources, web search for the rest, Alpha Vantage as a backup. If an important source is blocked, tell the user once in one line and carry on.
-4. If the profile is a blank template, or any section is marked **PROPOSED** or "confirm on first run", settle it with the user before Phase 1 (one short round of questions, recommended defaults offered). Save the answers to `profile.md`, remove the PROPOSED marker, and set "Policy last reviewed".
+4. **First run** (no runs yet in the history, or the profile has PROPOSED or "confirm" sections): follow `references/onboarding.md`. Ask its questions in one message with recommended defaults, save the answers to `profile.md` (remove the PROPOSED marker, set "Policy last reviewed"), and apply its first-run differences in the later phases.
 5. **Annual review.** If "Policy last reviewed" is over 12 months old, or this is the first run in March or April since it was last reviewed (UK tax year ends 5 April), also re-confirm the policy and financial foundations and run the tax-year checklist in `references/uk-tax-and-wrappers.md`.
 
 ### Phase 1: Intake
