@@ -29,6 +29,8 @@ Each person has a folder under `portfolios/<name>/` at the repo root:
 
 Create any missing file on the run that first needs it (templates in `references/report-template.md`). Never put one person's holdings or picks into the other person's files or report; the only cross-read allowed is the household overlap check in Phase 5.
 
+**Never trade.** The eToro connector can place real orders. This skill only reads: never call `place-trade`, `place-close`, `prepare-trade`, `prepare-close` or `execute-write`, and never change watchlists, alerts or copy settings. Recommendations go in the report; the user places every order themselves. If the user explicitly asks Claude to place an order, that is outside this skill: show the exact order and get their approval for that one order first.
+
 **Broker availability is a hard constraint.** Picks that aren't tradeable on the relevant platform (and ISA-eligible, for ISA picks) are useless. Verify every recommendation.
 
 ## References (read when the phase calls for them)
@@ -58,7 +60,7 @@ If a subagent tool is available, research holdings and candidates in parallel ba
 ### Phase 1: Intake
 
 Ask the user for:
-1. **Holdings data** for each portfolio. Broker CSV exports or statements are best (exact cost basis, needed for CGT); screenshots are fine. Include cash balances.
+1. **Holdings data** for each portfolio. If the eToro connector is connected, pull eToro holdings, cash and trades from it (`references/data-sources.md` section 1b) and don't ask for eToro screenshots. For other brokers, CSV exports or statements are best (exact cost basis, needed for CGT); screenshots are fine. Include cash balances.
 2. **Slot split** for this month: micro-cap slots (eToro) and ISA slots split between large-caps and ETFs. The budget is in the profile; never assume the split.
 3. **Anything that changed**: income, big upcoming expenses, a goal date moving, a view they want tested (optional themes or names).
 
@@ -68,7 +70,7 @@ Then parse the holdings into a table (ticker, value, P&L, weight) and show the u
 
 Load the history, thesis register and scorecard.
 
-- **Execution:** compare holdings with last month's action list. Record what was and wasn't done; don't re-litigate skipped items without new information.
+- **Execution:** compare holdings (and, with the eToro connector, closed trades since the last run) with last month's action list. Record what was and wasn't done; don't re-litigate skipped items without new information.
 - **Standing decisions are final** (e.g. "keep X, do not recommend trimming again"). Respect them unless the condition they name for revisiting has been met.
 - **Rejected names** need an explicit reason the rejection no longer holds before they can return.
 - **Lessons** from earlier runs apply now; list the ones relevant to this month in working notes.
@@ -96,7 +98,7 @@ Run the diagnostics in `references/wealth-management-framework.md` and produce a
 - **Exposures:** sector, region, currency (GBP vs USD and others), style (long-duration growth vs value/defensive), position count and line items too small to matter.
 - **Mandate drift:** venture-sleeve holdings that are no longer small caps; ISA satellites that have grown core-sized.
 - **Household overlap:** read the other person's latest holdings snapshot (their history file) for aggregate overlap only: the same names, themes or ETFs held by both, and combined concentration. Report only the overlap, never their positions or values.
-- **Tax position:** for the GIA (eToro), unrealized gains and losses, realized gains so far this tax year vs the CGT allowance, and harvesting opportunities (mind the 30-day rule). Asset location: anything better held in an ISA.
+- **Tax position:** for the GIA (eToro), unrealized gains and losses, realized gains so far this tax year vs the CGT allowance (from eToro trading history since 6 April when connected, converted to GBP), and harvesting opportunities (mind the 30-day rule). Asset location: anything better held in an ISA.
 - **Costs:** FX fees, spreads and fund charges in the current setup.
 - **Stress test:** estimate the portfolio's move in 3-4 scenarios relevant now (e.g. rates +100bp, equity bear market -30%, crypto -50%, a named geopolitical reversal, GBP +10%), using rough betas. The point is to spot fragility, not precision.
 
@@ -149,6 +151,7 @@ Fill the slots in conviction order (£100 per slot unless the profile says other
 
 - **Don't pad.** If nothing clears the bar for a slot, use it for a qualifying core top-up or hold cash, and say so.
 - **Name the rejections**, especially the hot trade everyone is talking about.
+- **eToro check:** run `get-instruments-overview` on every eToro finalist and top-up in one batch: confirm `allowOpenPosition`, note whole-unit-only instruments (adjust the amount to whole shares) and the spread.
 - **Execution notes:** limit orders for small caps and anything with a wide spread; trade US names in US hours, away from the open and close; FX cost on non-GBP purchases; prefer GBP-traded lines of UCITS ETFs where equivalent; UK shares carry 0.5% stamp duty (ETFs and AIM shares don't).
 - **Priority order:** if the user only does three things this month, which three.
 - **Arithmetic check:** slots add up to the budget, sells and redeployments reconcile, every figure has a date.
@@ -175,7 +178,8 @@ Before delivering, verify:
 - [ ] Analyst signals read as revisions and changes, not just rating levels; underwriter coverage discounted.
 - [ ] Red flags checked (dilution, going concern, insider selling, governance, liquidity).
 - [ ] Bear case and pre-mortem written for every finalist.
-- [ ] Broker availability and ISA eligibility verified for every pick.
+- [ ] Broker availability and ISA eligibility verified for every pick (eToro picks via `get-instruments-overview`, including whole-unit constraints).
+- [ ] No trading tool was called.
 - [ ] Tax effect checked for every GIA sell; wrapper and FX costs considered.
 - [ ] Standing decisions and prior rejections respected.
 - [ ] Numbers add up; every figure dated.

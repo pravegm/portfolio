@@ -18,6 +18,10 @@ portfolios/
 
 Only read and write the folder of the person running the session. Never mix their holdings, history or picks.
 
+## Trading
+
+Connected broker tools (e.g. eToro) can place real trades. Use them read-only. Never place, close or modify orders, positions, copy settings, watchlists or alerts unless the account owner explicitly asks in that session and approves each individual order.
+
 ## Keeping history across sessions
 
 Cloud sessions run in throwaway containers and new sessions start from `main`, so a run's files only count once they are on `main`.

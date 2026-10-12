@@ -9,8 +9,9 @@ What a session can reach depends on its environment's network settings. At the s
 1. Run `bash .claude/skills/portfolio-allocator/scripts/check_access.sh`. `200`/`301` means reachable; `000` means blocked by the network policy or refused by the site.
 2. Use the **helper scripts** (section 1a) for every reachable source. They fetch through the session proxy with `curl`. The built-in WebFetch tool does **not** go through that proxy and failed for every finance site in testing, so don't rely on it.
 3. **Web search** covers everything else (news, analyst commentary, pages on blocked hosts).
-4. **Alpha Vantage MCP** (tools named `mcp__Alpha_Vantage_MCP_Server__*`, if connected) is a backup; see the budget below.
-5. **User-supplied data** (broker CSV exports, screenshots, pasted pages) is always usable.
+4. **eToro connector** (tools named `mcp__eToro__*`, if the person connected it): primary source for their eToro holdings, trades and instrument availability; see section 1b.
+5. **Alpha Vantage MCP** (tools named `mcp__Alpha_Vantage_MCP_Server__*`, if connected) is a backup; see the budget below.
+6. **User-supplied data** (broker CSV exports, screenshots, pasted pages) is always usable.
 
 If an important source is blocked, tell the user once, in one line, which host and that it can be added under the environment's allowed domains (section 4). Never fill a gap with invented numbers; list it under evidence gaps.
 
@@ -40,6 +41,24 @@ Useful pages for `fetch_text.py`:
 Returns in GBP for a USD asset: `(1 + r_usd) x (GBPUSD at start / GBPUSD at end) - 1`; get both FX closes from `prices.py GBPUSD=X`.
 
 SEC asks automated requests to declare a contact in the User-Agent. The scripts send a neutral placeholder; set the environment variable `SEC_USER_AGENT` to a real contact only if the user asks for that.
+
+## 1b. eToro connector (tools named `mcp__eToro__*`)
+
+If the person has connected eToro to their Claude account, it is the primary source for their eToro data. Load the tools with ToolSearch (`etoro`). **Read-only use only** (see the trading rule in SKILL.md).
+
+| Tool | Use it for |
+|---|---|
+| `get-my-portfolio-summary` (`includePositions: true` when open dates are needed) | Every eToro holding with units, invested amount, average open rate, current value, P&L, plus copied traders (e.g. a Smart Portfolio/copy position) and pending orders. Replaces eToro screenshots. Amounts are in the account currency (USD for Praveg): convert to GBP with `prices.py GBPUSD=X` |
+| `get-my-trading-history` (`minDate`: 6 April of the current tax year) | Closed trades with open/close dates and rates, `netProfit` and separate `fees`. Feeds the execution check (what was sold) and the realized-gains log for CGT. Keep the window near 90 days per call if it times out |
+| `get-my-balances` | Cash across eToro accounts, including an eToro ISA (MoneyFarm) if one exists |
+| `get-instruments-overview` (up to 100 symbols per call; batch them) | Whether each candidate can be bought on this account (`allowOpenPosition`), live bid/ask and spread, **whole vs fractional units** (`unitsQuantityType`), minimum position size, and whether a W-8BEN is required. Run it for every eToro finalist and top-up |
+| `get-my-positions-and-orders` | Position-level detail and pending orders if needed |
+
+Notes from testing (October 2026):
+- Some newer US listings trade in **whole units only**. A £100 slot then buys a whole number of shares, so the amount can differ from £100 (or be impossible if one share costs more than the slot). Say so in the orders table.
+- `allowOpenPosition: false` means it can't be bought on that account even if eToro lists it (e.g. VWRP.L on Praveg's account).
+- Eligibility reflects the connected account (the regular trading account). It does not confirm eligibility inside an eToro ISA; check that separately.
+- Trading history may not show everything recorded in the history file (e.g. trades closed outside the window, or inside a copy portfolio). Reconcile, and flag differences rather than guessing.
 
 ### Alpha Vantage budget (free key, 25 calls/day)
 
