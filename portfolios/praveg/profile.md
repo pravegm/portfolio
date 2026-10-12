@@ -14,6 +14,7 @@
 - Existing positions include speculative names like INOD, EVLV, MEDI.OL, BIOGb.ST (verify against latest screenshot each run)
 
 ## ISA portfolio (Revolut Stocks & Shares ISA)
+- Revolut plan: **Ultra**: 10 commission-free trades a month; beyond that 0.12% per order. The 8 monthly ISA buys fit inside the free allowance, leaving 2 spare for any sells or rebalancing; flag it if a month's plan needs more than 10 orders.
 - £800 a month
 - Long-term wealth building
 - Mix of large-caps and ETFs (split decided per run)
