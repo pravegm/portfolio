@@ -7,7 +7,7 @@
 - Themes historically: crypto adjacencies, EV/battery, AI infrastructure, biotech
 - Existing positions include speculative names like INOD, EVLV, MEDI.OL, BIOGb.ST (verify against latest screenshot each run)
 
-## ISA portfolio (Revolut)
+## ISA portfolio (Revolut Stocks & Shares ISA)
 - Monthly contributions
 - Long-term wealth building
 - Mix of large-caps and ETFs (split decided per run)

@@ -65,6 +65,8 @@ ETFs have specific evaluation criteria.
 
 **For Revolut specifically**: Revolut's ETF universe is more limited than a full broker. Verify availability before recommending. UCITS (Ireland-domiciled) ETFs are the typical universe for UK ISA investors.
 
+**For Trading 212 specifically**: its ISA instrument list differs from its Invest account, so check the instrument is available inside the Trading 212 Stocks & Shares ISA, not just on the platform. UCITS (Ireland-domiciled) ETFs apply here too.
+
 ## Entry-point evaluation
 
 Use this rubric to tag candidates.

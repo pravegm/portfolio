@@ -1,6 +1,6 @@
 ---
 name: portfolio-allocator
-description: Run the monthly investment allocation workflow for one of the people who share this repo (each has their own profile, history and portfolios under portfolios/<name>/; e.g. a high-risk micro-cap moonshot portfolio on eToro and a long-term ISA portfolio of large-caps + ETFs on Revolut). Takes portfolio screenshots, researches current holdings exhaustively, then produces a ranked list of new picks with rationale and entry-point reasoning. Trigger this skill whenever the user mentions adding to their portfolio, picking new stocks, monthly investing, "what should I buy this month", "topping up", "what to add to eToro/ISA/Revolut", running their monthly allocation, or any phrasing that suggests choosing new investments. Trigger aggressively — even casual phrasing like "time to invest again" or "help me pick stocks" should pull this in. Do NOT trigger for one-off stock research without portfolio context, or for portfolio review without an intent to add new positions.
+description: Run the monthly investment allocation workflow for one of the people who share this repo (each has their own profile, history and portfolios under portfolios/<name>/; typically a high-risk micro-cap moonshot portfolio on eToro and a long-term ISA portfolio of large-caps + ETFs on the ISA broker named in their profile, such as Revolut or Trading 212). Takes portfolio screenshots, researches current holdings exhaustively, then produces a ranked list of new picks with rationale and entry-point reasoning. Trigger this skill whenever the user mentions adding to their portfolio, picking new stocks, monthly investing, "what should I buy this month", "topping up", "what to add to eToro/ISA/Revolut/Trading 212", running their monthly allocation, or any phrasing that suggests choosing new investments. Trigger aggressively — even casual phrasing like "time to invest again" or "help me pick stocks" should pull this in. Do NOT trigger for one-off stock research without portfolio context, or for portfolio review without an intent to add new positions.
 ---
 
 # Portfolio Allocator
@@ -23,13 +23,13 @@ Never mix one person's holdings, history or picks into another person's run.
 
 Run these phases in order. Do not skip ahead even if the user seems impatient — the value of this skill is the rigor.
 
-The phases below use the micro-cap moonshot (eToro) and ISA (Revolut) setup as the worked example. If the user's profile lists different portfolios or brokers, apply the same steps, rigor and output structure to their portfolios instead.
+The phases below assume the standard setup: a micro-cap moonshot portfolio on eToro and an ISA portfolio. Wherever they say "ISA broker", use the one named in the user's profile (e.g. Revolut, Trading 212). If the profile lists different portfolios or brokers, apply the same steps, rigor and output structure to their portfolios instead.
 
 ### Phase 0: Identify the user
 
 Ask who is running this (the folder names under `portfolios/` are the options) unless they have already said so in the conversation. Then read `portfolios/<name>/profile.md`.
 
-If the profile is still a blank template, fill it in with the user before Phase 1: which portfolios they have, the broker for each, the strategy and horizon, the typical amount per position and additions per month, risk posture, and any themes. Save it to their `profile.md`.
+If the profile is still a blank template or has gaps marked "confirm on first run", fill it in with the user before Phase 1: which portfolios they have, the broker for each, the strategy and horizon, the typical amount per position and additions per month, risk posture, and any themes. Save it to their `profile.md`.
 
 ### Phase 1: Intake
 
@@ -78,7 +78,7 @@ Generate candidates separately for each portfolio. Aim for 3x the requested coun
 - ETFs: factor tilts, geographic exposure, sector rotation opportunities, expense ratios, AUM, tracking error
 - Large-caps: quality businesses with durable moats, reasonable valuation, dividend or buyback history if relevant
 - Honor the ETF/large-cap split the user specified
-- Verify availability on Revolut before finalizing
+- Verify availability on the user's ISA broker before finalizing, and that it is ISA-eligible there
 
 For every candidate, research:
 - Past 1Y, 3Y, 5Y price performance (where data exists)
@@ -100,7 +100,7 @@ From candidates, select the requested number per portfolio. Rank by conviction. 
 3. **Thesis** — 2-3 sentences on why this fits the portfolio's intent
 4. **Entry tag** — undervalued / fair / premium
 5. **Key risk** — the single biggest thing that could break the thesis
-6. **Broker confirmation** — confirmed available on eToro or Revolut
+6. **Broker confirmation** — confirmed available on eToro or the user's ISA broker
 
 If the user requested 2 picks but only 1 candidate clears the rigor bar, **say so and recommend 1 plus holding cash for the other slot**. Do not pad. The skill's job is to help the user invest well, not to fill a quota.
 
@@ -126,7 +126,7 @@ Produce a single markdown file: `portfolios/<name>/allocations/portfolio-allocat
 ### 2. [TICKER] — [Company name]
 [same structure]
 
-## ISA picks (Revolut)
+## ISA picks ([ISA broker])
 ### 1. [TICKER] — [Name]
 [same structure, with ETF-specific fields where relevant: expense ratio, AUM, tracking method]
 
@@ -147,7 +147,7 @@ After producing the deliverable, update (or create) `portfolios/<name>/portfolio
 ### eToro (micro-cap)
 - [TICKER] — added [date], thesis [one-liner]
 ...
-### Revolut (ISA)
+### [ISA broker] (ISA)
 - [TICKER] — added [date], thesis [one-liner]
 ...
 

@@ -1,12 +1,13 @@
 # Shubhi's profile
 
-_Blank template. The skill fills this in with Shubhi on her first run (Phase 0)._
+## Micro-cap moonshot portfolio (eToro)
+- £100 per stock, ~2 additions per month
+- Venture-style, 10-year+ horizon
+- Aggressive risk posture: optimize for 10x+ potential, accept high failure rate
+- Themes and existing positions: confirm on first run from her screenshots
 
-For each portfolio:
-- Name and broker
-- Account type (e.g. ISA, general investment account, pension)
-- Strategy and horizon
-- Typical amount per position and additions per month
-- Risk posture
-- Themes or sectors of interest
-- Current notable holdings
+## ISA portfolio (Trading 212 Stocks & Shares ISA)
+- Monthly contributions
+- Long-term wealth building
+- Mix of large-caps and ETFs (split decided per run)
+- Lower risk, compounding focus
