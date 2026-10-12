@@ -65,7 +65,7 @@ Where each holding should live:
 | eToro (GIA) | Per-trade commission on stocks, FX conversion on GBP deposits into the USD account, spreads on crypto, withdrawal fee |
 | eToro ISA | No commission or custody fee since July 2026; FX charge on non-GBP assets; ISA instrument list |
 | Trading 212 ISA | No commission; 0.15% FX fee on non-GBP trades and dividends; card deposit fees beyond a threshold (bank transfer free) |
-| Revolut ISA | Free orders per month depend on the subscription plan, with commission beyond that; FX fee varies by plan (reported up to ~1%). **With 8 ISA orders a month, check how many are free on the user's plan.** |
+| Revolut ISA | Free orders per month depend on the subscription plan; beyond that, commission of 0.25% of the order (Standard, Plus, Premium, Metal) or 0.12% (Ultra). FX fee varies by plan (reported up to ~1%). With 8 ISA orders a month, most may be beyond the free allowance: ~£0.25 per £100 order, plus FX on non-GBP lines. |
 
 Per-month cost check: number of orders x commission + FX % x non-GBP amount + fund charges. On £100 orders, a £1 fee is 1%; prefer GBP-traded lines and batching where the platform charges per order.
 

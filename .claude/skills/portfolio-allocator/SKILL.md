@@ -60,7 +60,7 @@ If a subagent tool is available, research holdings and candidates in parallel ba
 ### Phase 1: Intake
 
 Ask the user for:
-1. **Holdings data** for each portfolio. If the eToro connector is connected, pull eToro holdings, cash and trades from it (`references/data-sources.md` section 1b) and don't ask for eToro screenshots. For other brokers, CSV exports or statements are best (exact cost basis, needed for CGT); screenshots are fine. Include cash balances.
+1. **Holdings data** for each portfolio. If the eToro connector is connected, pull eToro holdings, cash and trades from it (`references/data-sources.md` section 1b) and don't ask for eToro screenshots. For a Trading 212 ISA with API keys set, use `scripts/trading212.py` (section 1c). For other brokers, CSV exports or statements are best (exact cost basis, needed for CGT); screenshots are fine. Include cash balances.
 2. **Slot split** for this month: micro-cap slots (eToro) and ISA slots split between large-caps and ETFs. The budget is in the profile; never assume the split.
 3. **Anything that changed**: income, big upcoming expenses, a goal date moving, a view they want tested (optional themes or names).
 

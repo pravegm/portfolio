@@ -60,6 +60,16 @@ Notes from testing (October 2026):
 - Eligibility reflects the connected account (the regular trading account). It does not confirm eligibility inside an eToro ISA; check that separately.
 - Trading history may not show everything recorded in the history file (e.g. trades closed outside the window, or inside a copy portfolio). Reconcile, and flag differences rather than guessing.
 
+## 1c. ISA brokers
+
+**Trading 212 (API, read-only):** Trading 212's public API (beta) supports Invest and Stocks ISA accounts. `scripts/trading212.py` reads cash, portfolio, order history, dividends, transactions, and the list of instruments tradeable on the account (the most reliable ISA-eligibility check, since the Trading 212 website blocks automated access). It sends GET requests only. Setup, done once by the account owner:
+1. In the Trading 212 app, select the ISA account, go to Settings > API and generate a key with **read permissions only** (account data, portfolio, history, metadata; no order permissions).
+2. In the cloud environment's settings, add `T212_API_KEY` and `T212_API_SECRET` (under Network secrets if offered, otherwise as environment variables), and add `live.trading212.com` to the allowed domains.
+3. Start a new session. Never paste keys into chat.
+If a call returns 401, the key is wrong, lacks a permission, or (reported by some ISA users) the API isn't yet enabled for that account; fall back to a CSV export or screenshots.
+
+**Revolut ISA (no API):** Revolut offers no public API or connector for its ISA (the Revolut X connector covers only its crypto exchange). Use screenshots of the ISA holdings screen, or statements from the app's documents section.
+
 ### Alpha Vantage budget (free key, 25 calls/day)
 
 Free key limits: 25 requests a day, at most 1 per second; `COMPANY_OVERVIEW` returned "premium endpoint" in testing. Call tools one at a time, never in parallel. Since Yahoo and Finviz now cover prices and snapshots, keep Alpha Vantage for:
