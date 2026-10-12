@@ -1,6 +1,6 @@
 ---
 name: portfolio-allocator
-description: Run the monthly investment allocation workflow for one of the people who share this repo (each has their own profile, history and portfolios under portfolios/<name>/; typically a high-risk micro-cap moonshot portfolio on eToro and a long-term ISA portfolio of large-caps + ETFs on the ISA broker named in their profile, such as Revolut or Trading 212). Takes portfolio screenshots, researches current holdings exhaustively, then produces a ranked list of new picks with rationale and entry-point reasoning. Trigger this skill whenever the user mentions adding to their portfolio, picking new stocks, monthly investing, "what should I buy this month", "topping up", "what to add to eToro/ISA/Revolut/Trading 212", running their monthly allocation, or any phrasing that suggests choosing new investments. Trigger aggressively — even casual phrasing like "time to invest again" or "help me pick stocks" should pull this in. Do NOT trigger for one-off stock research without portfolio context, or for portfolio review without an intent to add new positions.
+description: Run the monthly investment allocation workflow for one of the people who share this repo (each has their own profile, history and portfolios under portfolios/<name>/; typically a high-risk micro-cap moonshot portfolio on eToro and a long-term ISA portfolio of large-caps + ETFs on the ISA broker named in their profile, such as Revolut or Trading 212). Takes portfolio screenshots, scans global markets, reviews every holding (with exit/add/hold verdicts), then allocates the month's budget across new picks and top-ups with rationale and entry-point reasoning. Trigger this skill whenever the user mentions adding to their portfolio, picking new stocks, monthly investing, "what should I buy this month", "topping up", "what to add to eToro/ISA/Revolut/Trading 212", running their monthly allocation, or any phrasing that suggests choosing new investments. Trigger aggressively — even casual phrasing like "time to invest again" or "help me pick stocks" should pull this in. Do NOT trigger for one-off stock research without portfolio context, or for portfolio review without an intent to add new positions.
 ---
 
 # Portfolio Allocator
@@ -34,153 +34,240 @@ If the profile is still a blank template or has gaps marked "confirm on first ru
 ### Phase 1: Intake
 
 Ask the user for:
-1. Screenshots of each of their portfolios (current positions, sizes, P&L if visible)
-2. How many new products they want to add to each portfolio this run
-3. For ISA only: the ETF/large-cap split they want this month
-4. Any specific themes, sectors, or stocks already on their radar (optional but useful)
+1. Screenshots of each of their portfolios (current positions, values, P&L, cash)
+2. The slot counts for this month: how many micro-cap slots (eToro) and how many ISA slots go to large-caps vs ETFs. The budget is in their profile; never assume the split.
+3. Any specific themes, sectors, or stocks already on their radar (optional but useful)
 
 Wait for all of this before proceeding. Do not start research with partial inputs.
 
 ### Phase 2: History check
 
-Before researching new picks, load the run history if it exists:
-- Check for `portfolios/<name>/portfolio-allocator-history.md`, or a history file the user attached
-- If it exists, parse it for: current holdings, previously rejected picks, previously considered-but-not-picked candidates, and any conviction notes
-- If it doesn't exist, this is the first run — note that and proceed
+Load `portfolios/<name>/portfolio-allocator-history.md` (or a history file the user attached). If it doesn't exist, this is the first run: note that and proceed.
 
-The history file is the source of truth for what NOT to re-recommend without strong reason. If a previously rejected pick is now compelling, that's fine but the rationale must explicitly address why the prior rejection no longer holds.
+Parse it for: standing structure and rules, last month's holdings and recommendations, picks history, regime context, rejected candidates, standing user decisions, and conviction notes/lessons.
 
-### Phase 3: Status quo research
+- **Standing user decisions are final.** If the history records that the user has decided something (e.g. "keep X, do not recommend trimming again"), respect it and do not re-raise it unless the condition it names for revisiting has been met.
+- **Rejected names** need an explicit reason why the prior rejection no longer holds before they can be recommended.
+- **Lessons** from earlier runs (e.g. entry-timing discipline on top-ups) apply to this run.
 
-Parse the screenshots to extract current holdings. For each holding, research:
-- Current price vs. user's likely entry (estimate from P&L if shown)
-- Last 3-6 months price action and what drove it
-- Recent material news, earnings, regulatory events
-- Analyst coverage shifts (upgrades, downgrades, price target changes)
-- Thesis status: is the original investment thesis still intact, weakening, or strengthening?
+### Phase 3: Global market scan
 
-Use web_search aggressively here. Multiple searches per holding is correct, not excessive. Cross-reference sources. For micro-caps especially, check for dilution events, going-concern flags, or insider activity.
+Research what moved markets since the last run, using current data only:
+- **Rates and central banks**: policy moves, 10-year yields, inflation prints, jobs data
+- **Energy and commodities**: oil, gas, gold, industrial metals, and what is driving them
+- **Equities**: index levels, sector rotation, notable single-day moves and their causes
+- **Crypto**: BTC and majors, regulatory developments, key levels
+- **Regions**: US, Europe, Japan, EM, UK; earnings growth expectations and fund positioning
+- **Hot trades**: what has run hardest this year, and whether the asymmetry is still there
 
-Summarize findings as a brief portfolio health snapshot before moving to new picks. Flag any existing position that warrants attention (not a recommendation to sell, just a flag).
+End with **"What this means for you"**: how the regime interacts with the shape of the user's portfolio (duration, concentration, gaps such as no fixed income or no defensives).
 
-### Phase 4: Candidate generation
+If the regime has changed (e.g. first hike in years, a supply shock), say so up front. It is the most important fact in the report.
 
-Generate candidates separately for each portfolio. Aim for 3x the requested count per portfolio (i.e., if user wants 2 micro-cap picks, research 6 candidates and narrow down).
+### Phase 4: Portfolio review
 
-**For the micro-cap portfolio**, search for:
+Parse the screenshots to extract every holding with value and P&L. First check **execution of last month's recommendations**: compare the screenshots with last month's action list and record what was and wasn't done.
+
+Then research every holding:
+- Price action since last run and what drove it
+- Latest earnings and operating numbers (revenue, orders, backlog, cash, burn)
+- Material news, regulatory events, analyst target changes
+- For micro-caps: dilution filings, going-concern language, insider activity, cash runway
+
+**Separate multiple compression from thesis breaks.** A falling price with improving operating numbers is a valuation story; slipping milestones, rising burn, or a product that keeps not shipping is a thesis break. Check the operating numbers before calling anything broken.
+
+Give every holding a verdict:
+- `EXIT`: the thesis is genuinely broken, or it is a dead line item
+- `ADD`: thesis intact or strengthening and the entry is good now (a candidate for a slot)
+- `HOLD`: thesis intact, no action
+- `HOLD, watch size`: position has grown large enough to matter
+- `HOLD, tight leash`: thesis intact but weak; name what would break it
+
+Also assess concentration (largest positions as % of each portfolio) and structural gaps (missing asset classes, sectors or regions).
+
+Use web search aggressively. Multiple searches per holding is correct, not excessive. Where fresh data can't be found, say so in the evidence gaps note rather than guessing.
+
+### Phase 5: Candidate generation
+
+Slots can be filled by **new positions or top-ups of existing holdings** marked `ADD`. Research about 3x the slot count per portfolio and narrow down.
+
+**For the micro-cap portfolio (eToro)**:
 - Small/micro-caps in emerging themes (look at where existing portfolio is concentrated and consider both deepening and diversifying)
-- Companies with asymmetric risk/reward — capped downside (cash on hand, real revenue, real product), uncapped upside (TAM, moat formation, optionality)
+- Asymmetric risk/reward: capped downside (cash on hand, real revenue, real product), uncapped upside (TAM, moat formation, optionality)
 - 10x+ pathways must be articulable, not hand-waved
-- Avoid pure meme/lottery tickets without a real underlying thesis
-- Verify availability on eToro before finalizing
+- Avoid pure meme/lottery tickets and buying after a huge run into a binary catalyst
+- Respect themes the history marks as fully allocated
+- Verify availability on eToro
 
-**For the ISA portfolio**, search for:
-- ETFs: factor tilts, geographic exposure, sector rotation opportunities, expense ratios, AUM, tracking error
-- Large-caps: quality businesses with durable moats, reasonable valuation, dividend or buyback history if relevant
-- Honor the ETF/large-cap split the user specified
-- Verify availability on the user's ISA broker before finalizing, and that it is ISA-eligible there
+**For the ISA (large-caps and ETFs)**:
+- ETFs: factor tilts, geographic exposure, sector rotation, filling structural gaps (e.g. short-duration fixed income, staples) when the regime calls for it; check expense ratio, AUM, domicile, replication, accumulating vs distributing
+- Large-caps: quality businesses with durable moats and reasonable valuation, including direct beneficiaries of the current regime
+- Honor the large-cap/ETF slot split the user gave
+- Verify availability on the user's ISA broker, and that it is ISA-eligible there
 
 For every candidate, research:
 - Past 1Y, 3Y, 5Y price performance (where data exists)
-- Current valuation metrics relative to peers and history
-- Recent analyst views and price targets
+- Current valuation relative to peers and history
+- Recent analyst views and price target spread
 - Forward catalysts and risks
-- Entry-point quality: is the current price a good entry, fair entry, or premium entry?
+- Entry-point quality. **Apply the same entry-timing discipline to top-ups as to new picks**: don't top up right after a run.
 
-Use the entry-point bias **mix**: surface both undervalued opportunities AND high-conviction picks even if priced full. Tag each candidate as one of:
-- `Undervalued entry` — price is below fair value, dip-buying opportunity
-- `Fair entry, high conviction` — priced fairly, thesis strong enough to pay up
-- `Premium but exceptional` — priced richly but quality justifies it
+Tag each candidate:
+- `Undervalued`: below fair value, recent drawdown not thesis-breaking
+- `Fair` / `Fair, high conviction`: near fair value, thesis strong enough to pay it
+- `Premium but exceptional`: use rarely
 
-### Phase 5: Selection and ranking
+### Phase 6: Selection
 
-From candidates, select the requested number per portfolio. Rank by conviction. For each pick, the rationale must cover:
-1. **What it is** — one-line business description
-2. **Why now** — the catalyst or condition that makes this the right month
-3. **Thesis** — 2-3 sentences on why this fits the portfolio's intent
-4. **Entry tag** — undervalued / fair / premium
-5. **Key risk** — the single biggest thing that could break the thesis
-6. **Broker confirmation** — confirmed available on eToro or the user's ISA broker
+Fill the requested slots, ranked by conviction, at £100 per slot unless the profile says otherwise. Each slot's rationale covers: what it is (for new names), why now, the thesis, the entry tag, the key risk, and broker confirmation.
 
-If the user requested 2 picks but only 1 candidate clears the rigor bar, **say so and recommend 1 plus holding cash for the other slot**. Do not pad. The skill's job is to help the user invest well, not to fill a quota.
+- **Don't pad.** If nothing clears the bar for a slot, say so and either use it for a top-up that does clear it, or recommend holding cash.
+- **Deviating is allowed, but explicit.** If the regime makes the requested mix unwise (e.g. eight new speculative names into a rate shock), recommend the better allocation and state plainly why you are deviating. Keep the slot structure the user asked for.
+- **Rejections are part of the output.** Name the obvious candidates you rejected and why, especially the hot trade everyone is talking about.
 
-### Phase 6: Output
+### Phase 7: Output
 
-Produce a single markdown file: `portfolios/<name>/allocations/portfolio-allocation-YYYY-MM-DD.md`. Use this structure:
+Produce `portfolios/<name>/allocations/portfolio-allocation-YYYY-MM-DD.md` with this structure:
 
 ```markdown
 # Portfolio Allocation — [Month YYYY]
 
-## Status quo snapshot
-[Brief health check on existing positions, flagging anything that warrants attention.]
+*Research, not financial advice. I'm not a regulated adviser or tax adviser, and I don't know your full financial picture. Verify prices before trading; decisions are yours.*
 
-## Micro-cap picks (eToro)
-### 1. [TICKER] — [Company name]
-- **What it is**: ...
-- **Why now**: ...
-- **Thesis**: ...
-- **Entry**: [Undervalued / Fair / Premium]
-- **Key risk**: ...
-- **Available on eToro**: Confirmed
+---
 
-### 2. [TICKER] — [Company name]
-[same structure]
+## 1. Global market scan
+[Rates, energy/commodities, equities, crypto, regions, hot trades. Lead with the regime change if there is one.]
 
-## ISA picks ([ISA broker])
-### 1. [TICKER] — [Name]
-[same structure, with ETF-specific fields where relevant: expense ratio, AUM, tracking method]
+**What this means for you:** [how the regime meets this portfolio's shape]
 
-## Notes
-- [Any flags, caveats, or "if this happens, reconsider" notes]
+---
+
+## 2. Portfolio review
+Totals: **eToro £X** (N positions, £ cash), **ISA £Y (+Z%)** (N positions, £ cash). Combined **£T**.
+
+### The central finding
+[The one-paragraph story of the month for this portfolio, with the evidence.]
+
+### Exceptions: positions worth attention
+| Position | P/L | Value | Verdict | Reasoning |
+|---|---|---|---|---|
+
+### Full verdict table: everything else
+**eToro (holds):** TICKER +x% £v (short note) · ...
+**ISA (all HOLD):** TICKER +£x £v · ...
+
+[Concentration and structural gaps.]
+
+---
+
+## 3. Action list (ranked by money)
+1. [Exits, redeployment of proceeds, explicit "do not add" calls, standing decisions noted]
+
+**Tax note:** [eToro is taxable: losses can offset gains against the CGT allowance. Suggest an accountant.]
+
+---
+
+## 4. Where [Month]'s £[budget] goes
+[If deviating from the requested mix, say so and why, first.]
+
+### eToro — N slots, £X
+| Slot | Recommendation | Entry | Rationale |
+|---|---|---|---|
+
+[Rejected moonshot candidates and why, if no new name cleared the bar.]
+
+### ISA equities — N slots, £X
+| Slot | Recommendation | Entry | Rationale |
+|---|---|---|---|
+
+### ISA ETFs — N slots, £X
+| Slot | Recommendation | Entry | Rationale |
+|---|---|---|---|
+
+Mark new positions *(new)*; top-ups say "top-up". ETFs name the full fund, and an alternative if unavailable.
+
+---
+
+## 5. Notes
+- **What I got wrong last month:** [honest review of last month's picks]
+- **What worked:** [...]
+- **The honest summary of your [month]:** [...]
+- **If [key scenario] happens:** [what to expect and what not to do]
+- **Watchlist for next month:** [...]
+- **Rejected this month:** [name, reason]
+- **Evidence gaps:** [holdings or candidates where fresh data couldn't be found]
 ```
 
-Keep the rationale tight. The user wants picks plus rationale, not a research log. Detail belongs in the working notes, not the deliverable.
+Be specific with numbers and sources; state risks plainly. Keep each rationale tight.
 
-### Phase 7: Update history
+### Phase 8: Update history
 
-After producing the deliverable, update (or create) `portfolios/<name>/portfolio-allocator-history.md`:
+Update (or create) `portfolios/<name>/portfolio-allocator-history.md`. It is a compact memory for the next run, not a copy of the report. Keep these sections, replacing the month-specific ones and appending to the cumulative ones:
 
 ```markdown
 # Portfolio Allocator History
 
-## Holdings as of [YYYY-MM-DD]
-### eToro (micro-cap)
-- [TICKER] — added [date], thesis [one-liner]
-...
-### [ISA broker] (ISA)
-- [TICKER] — added [date], thesis [one-liner]
-...
+## Standing structure
+[Rules that apply every month, e.g. ask for the slot split each run. Budget.]
 
-## Picks this run
-- [date]: [tickers picked]
+## Holdings as of YYYY-MM-DD
+**eToro £X** (N positions, £ cash, invested £, P/L £)
+TICKER +x% £v | ...
+**ISA £Y (+Z%)** (N positions, £ cash)
+TICKER £v | ...
 
-## Rejected/considered candidates
-- [TICKER] — considered [date], rejected because [reason]
-...
+## Executed from [last month] (confirmed via screenshots)
+✓ done ... ✗ not done ...
+
+## Picks history
+- YYYY-MM-DD: eToro picks; ISA picks — [one-line outcome or theme]
+[cumulative: append this run's line]
+
+## [MONTH YYYY] — [regime headline]
+[Key macro facts from this run's market scan, compressed.]
+
+## Key insight
+[The central finding of this run.]
+
+## [Month] actions
+**EXIT:** ... **ADD:** ... **WATCH SIZE:** ... **DON'T ADD:** ...
+[Standing user decisions recorded here, in capitals, so later runs respect them.]
+
+## Rejected [month]
+- [name and reason; keep the cumulative "Earlier:" list of past rejections]
+
+## Conviction notes / lessons
+[cumulative: carry forward, add new lessons]
 ```
 
-Present both files to the user.
+Present both files to the user. Then commit and push them as described in the repo's CLAUDE.md.
 
 ## Research rigor checklist
 
-Before producing the deliverable, verify mentally:
+Before producing the deliverable, verify:
+- [ ] Did I research every holding, not just the big movers?
+- [ ] Did I check operating numbers before calling any thesis broken?
+- [ ] Did I check execution of last month's recommendations?
 - [ ] Did I search for each candidate by ticker AND by company name AND by recent news?
 - [ ] Did I check multiple sources (news, analyst, financial data)?
 - [ ] Did I check for red flags (dilution, going concern, insider selling, governance)?
-- [ ] Did I verify broker availability for every final pick?
+- [ ] Did I verify broker availability (and ISA eligibility) for every final pick?
+- [ ] Did I apply entry-timing discipline to top-ups as well as new picks?
 - [ ] Did I respect the user's portfolio intent (moonshot vs. compounding)?
-- [ ] Did I avoid recommending anything already in the portfolio without a strong thesis-change reason?
-- [ ] Did I check the history file for previously rejected names?
+- [ ] Did I respect standing user decisions and previously rejected names in the history?
 
 If any answer is no or "I'm not sure", do more research before delivering.
 
 ## What NOT to do
 
-- Don't generate picks from general knowledge alone. Always research current data.
-- Don't recommend a stock without confirming it trades on the relevant broker.
-- Don't pad the list to hit the requested count — quality over quantity.
+- Don't generate picks or verdicts from general knowledge alone. Always research current data.
+- Don't recommend anything without confirming it trades on the relevant broker.
+- Don't pad slots to hit the requested count. Quality over quantity.
+- Don't call a thesis broken on price alone.
+- Don't re-raise a decision the user has recorded as final.
 - Don't bury risks in the rationale. State them plainly.
-- Don't give financial advice in a regulated sense — present analysis, let the user decide.
+- Don't give financial advice in a regulated sense. Present analysis, let the user decide.
 - Don't skip the history check, even if the user is in a hurry.
 
 ## Reference

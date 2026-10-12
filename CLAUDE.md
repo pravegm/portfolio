@@ -21,4 +21,4 @@ Only read and write the folder of the person running the session. Never mix thei
 Cloud sessions run in throwaway containers and new sessions start from `main`, so a run's files only count once they are on `main`.
 
 - At the start of a run, `git fetch origin main` and make sure the working branch includes it, so the latest history is used.
-- At the end of a run, commit the new allocation report and updated history, push, then ask the user whether to open a pull request and merge it into `main`, so the next run sees it.
+- **Push to `main` directly, every time, without asking.** This is the repo owner's standing instruction. At the end of a run (and after any change to the skill, profiles or history), commit, push the session branch, then push the same commit to `main` (`git push origin HEAD:main`). If `main` has moved on, merge `origin/main` in first (never force-push `main`). Do not open pull requests for this.

@@ -1,6 +1,6 @@
 # Research Methods Reference
 
-Use this when running Phase 3 (status quo) and Phase 4 (candidate generation). Pick the relevant subsection.
+Use this when running Phase 4 (portfolio review) and Phase 5 (candidate generation). Pick the relevant subsection.
 
 ## Micro-cap research
 
