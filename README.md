@@ -3,7 +3,7 @@
 Monthly investing for Praveg and Shubhi, run with Claude Code and the `portfolio-allocator` skill.
 
 Each of us puts in **£1,000 a month**:
-- **£200 to eToro:** 2 micro-cap "venture" picks at £100 each (10-year+ horizon, aiming for a few big winners)
+- **£200 to micro-caps:** 2 "venture" picks at £100 each (10-year+ horizon, aiming for a few big winners). Praveg holds these on eToro; Shubhi on Trading 212.
 - **£800 to a Stocks & Shares ISA:** 8 slots of £100 across ETFs and large-cap stocks (Praveg on Revolut, Shubhi on Trading 212)
 
 Each month, Claude:
@@ -28,15 +28,15 @@ Everything is saved to this repo so the next month builds on it.
 1. **GitHub access.** Praveg adds your GitHub account as a collaborator on `pravegm/portfolio` with write access (repo Settings > Collaborators). Accept the email invite.
 2. **Connect GitHub to Claude.** In your Claude account, connect GitHub at https://claude.ai/connect-github.
 3. **Network access for research.** In Claude Code on the web (claude.ai/code), edit your cloud environment: under **Network access**, add every domain listed in section 4 of [`.claude/skills/portfolio-allocator/references/data-sources.md`](.claude/skills/portfolio-allocator/references/data-sources.md) to **Allowed domains**. Keep the package managers box ticked. Steps: https://code.claude.com/docs/en/cloud-environments#network-access. Without this, research falls back to web search only.
-4. **Connect eToro to Claude** (once your eToro account exists): on claude.ai, go to Settings > Connectors > eToro > Connect and log in. Claude then reads your eToro holdings directly instead of from screenshots. It never places trades: you always place orders yourself.
-5. **Connect your Trading 212 ISA (optional, recommended).** In the Trading 212 app, open your ISA, go to Settings > API and create a key with **read-only** permissions (account data, portfolio, history, metadata; no orders). Then, in your Claude cloud environment settings, add it as `T212_API_KEY` and `T212_API_SECRET` (Network secrets, or environment variables), and add `live.trading212.com` to the allowed domains. Never paste the key into the chat. Claude can then read your ISA holdings and check which ETFs and shares are available in it. If you skip this, screenshots work fine.
-6. **eToro.** If you don't have an eToro account yet, open it now: verification can take a day or more. If eToro asks you to fill in a **W-8BEN** form, do it (it cuts US dividend tax to 15%). Don't buy anything yet: the first run will help you decide whether your micro-caps go in eToro's regular account or an **eToro Stocks & Shares ISA** (tax-free gains, but losses can't be used against other gains).
+4. **Connect your Trading 212 ISA (recommended).** In the Trading 212 app, open your ISA, go to Settings > API and create a key with **read-only** permissions (account data, portfolio, history, metadata; no orders). Then, in your Claude cloud environment settings, add it as `T212_API_KEY` and `T212_API_SECRET` (Network secrets, or environment variables), and add `live.trading212.com` to the allowed domains. Never paste the key into the chat. Claude can then read your ISA holdings and check which ETFs and shares are available in it. If you skip this, screenshots work fine. Claude only reads; you always place orders yourself.
+5. **W-8BEN.** If Trading 212 hasn't already asked you to fill in a W-8BEN form, check under your account settings. It cuts US dividend tax to 15% and is needed for US shares.
+
+You don't need eToro. Everything, including your two micro-caps a month, runs on Trading 212: micro-caps go in your ISA (tax-free gains) wherever the stock is available there. If one isn't, Claude will suggest a Trading 212 regular (Invest) account or an alternative pick, and will only suggest eToro if there's a specific reason.
 
 ### Have these ready
 
-- **Trading 212 ISA holdings:** nothing needed if you connected the API key (step 5). Otherwise a screenshot of the portfolio screen, or a CSV export of your history (more precise). It should show your S&P 500 ETF from September, its value and its name or ticker.
-- **eToro:** whether the account is open and verified. If the eToro connector is connected, no screenshot is needed.
-- **The £1,000:** £800 ready to go into the Trading 212 ISA, £200 into eToro.
+- **Trading 212 ISA holdings:** nothing needed if you connected the API key (step 4). Otherwise a screenshot of the portfolio screen, or a CSV export of your history (more precise). It should show your S&P 500 ETF from September, its value and its name or ticker.
+- **The £1,000:** ready to go into your Trading 212 ISA (£800 for the 8 ISA slots, £200 for the 2 micro-caps).
 - **Answers to the onboarding questions.** Short answers are fine, and "rather not say" is allowed:
   - Emergency fund of 3-6 months' spending in place?
   - Any high-interest debt?
