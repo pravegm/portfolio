@@ -3,6 +3,15 @@
 ## Standing structure
 **Ask the user every month** how many micro-cap moonshots, ISA large-caps and ISA ETFs they want. Never assume. Sept 2026 = 2 + 3 + 3 (£800).
 
+## OCTOBER 2026 RUN AGENDA (set 2026-10-12)
+1. **Confirm the proposed investment policy and financial foundations** in the profile (first run under the upgraded skill).
+2. **Optimise the eToro portfolio for the long term: account placement plus structure.**
+   - Decision made: micro-caps go in an ISA where available, otherwise the regular eToro account. Crypto (BTC, SOL, BNB), the AI-Revolution copy portfolio and PSTX.CVR stay in the regular account.
+   - Open decision to settle with the user: **which ISA holds the venture sleeve: an eToro ISA (keeps it on eToro; narrower small-cap list, availability must be checked in the app) or the Revolut ISA (10 free trades a month on Ultra, 8 already used by ISA slots).**
+   - Build the full bed-and-ISA migration plan (`references/uk-tax-and-wrappers.md`): classify every eToro holding MOVE / KEEP / EXIT / CHECK; CGT estimate in GBP. On 2026-10-12 the direct holdings were roughly flat in USD (about +$880 gains vs -$800 losses; the +$787 total unrealized was almost all AI-Revolution), plus realized losses since 6 April (ENVX, ADA), so moving everything eligible this tax year looked well under the £3,000 exempt amount. Verify. Then the ISA allowance check, costs and step-by-step mechanics.
+   - Structure review alongside it: concentration (AI-Revolution about 19% of eToro; crypto theme across BTC, SOL, BNB, RIOT, MARA, WULF, COIN), names that have outgrown the micro-cap band (VRTX, NEE, INCY, COIN and others; decide whether they belong in the venture sleeve or the ISA's quality bucket), and dead or tiny lines.
+   - Output: a clear target end-state for the eToro side (what sits where, and why) and the orders to get there, kept separate from this month's £1,000 slot orders.
+
 ## Holdings as of 2026-09-20
 **eToro £4,785.85** (39 positions, £2.66 cash, invested £4,087.58, P/L +£695.61)
 AI-Revolution +129.8% £861.74 | ACMR +243.8% £326.30 | RIOT +120.7% £209.48 | INCY +106.3% £197.40 | TEM +76.9% £179.61 | PGY +38.3% £139.74 | INOD +28.9% £137.58 | VRTX +43.6% £134.02 | BTC -17.2% £132.80 | ALB -10.5% £128.88 | NEE +35.5% £128.08 | MEDI.OL +21.0% £120.10 | S.US +11.3% £110.56 | PHR +7.9% £108.96 | EVLV -0.4% £106.32 | WULF +0.5% £101.17 | SYM -0.9% £99.66 | BNB +19.8% £98.37 | KTOS -9.6% £92.28 | SOL -3.1% £91.58 | GPCR -3.4% £91.55 | SOFI -9.3% £90.08 | BIOGb.ST -9.2% £89.86 | 01211.HK -2.6% £88.76 | ACHR -7.7% £87.49 | COIN -14.3% £83.19 | RIVN -9.9% £82.52 | MP -17.5% £82.07 | RKLB -20.6% £80.24 | QS -16.5% £79.16 | CRSP -19.6% £76.23 | CRDO -26.9% £72.65 | IONQ -32.2% £66.91 | NNE -34.9% £63.96 | MARA -40.5% £58.61 | 9866.HK -59.2% £39.03 | ENVX -70.5% £27.80 | TLRY -80.7% £18.27 | PSTX.CVR £0.01

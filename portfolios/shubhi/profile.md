@@ -9,7 +9,8 @@
 ## Current status (as of October 2026, before her first run)
 - First run with the skill: October 2026. Onboarding questions (`references/onboarding.md`) are asked then.
 - Trading 212 Stocks & Shares ISA: £1,000 put into one S&P 500 ETF in September 2026, bought before using the skill. Confirm which fund (ticker/ISIN) and its current value from her holdings data.
-- eToro: confirm whether an account is open and verified, and whether the venture sleeve will sit in eToro's regular account or an eToro Stocks & Shares ISA (decide before the first micro-cap purchase).
+- eToro: confirm whether an account is open and verified.
+- **Venture sleeve placement (decided October 2026):** micro-caps go in an ISA wherever the stock is available, otherwise the regular eToro account. Settle on the first run which ISA holds them (an eToro ISA, or her Trading 212 ISA, whose API instrument list makes availability easy to check).
 - ISA allowance 2026/27: £1,000 used so far (plus anything else she has paid into ISAs since 6 April 2026; confirm).
 
 ## Micro-cap moonshot portfolio (eToro)

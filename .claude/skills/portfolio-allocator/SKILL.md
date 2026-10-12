@@ -98,7 +98,8 @@ Run the diagnostics in `references/wealth-management-framework.md` and produce a
 - **Exposures:** sector, region, currency (GBP vs USD and others), style (long-duration growth vs value/defensive), position count and line items too small to matter.
 - **Mandate drift:** venture-sleeve holdings that are no longer small caps; ISA satellites that have grown core-sized.
 - **Household overlap:** read the other person's latest holdings snapshot (their history file) for aggregate overlap only: the same names, themes or ETFs held by both, and combined concentration. Report only the overlap, never their positions or values.
-- **Tax position:** for the GIA (eToro), unrealized gains and losses, realized gains so far this tax year vs the CGT allowance (from eToro trading history since 6 April when connected, converted to GBP), and harvesting opportunities (mind the 30-day rule). Asset location: anything better held in an ISA.
+- **Tax position:** for the GIA (eToro), unrealized gains and losses, realized gains so far this tax year vs the CGT allowance (from eToro trading history since 6 April when connected, converted to GBP), and harvesting opportunities (mind the 30-day rule).
+- **Wrapper placement:** apply the venture-sleeve placement rule in `references/uk-tax-and-wrappers.md`. Classify GIA holdings as MOVE / KEEP / EXIT / CHECK, and if the profile or history asks for a migration, build the bed-and-ISA plan described there (CGT estimate, sequencing, allowance, costs).
 - **Costs:** FX fees, spreads and fund charges in the current setup.
 - **Stress test:** estimate the portfolio's move in 3-4 scenarios relevant now (e.g. rates +100bp, equity bear market -30%, crypto -50%, a named geopolitical reversal, GBP +10%), using rough betas. The point is to spot fragility, not precision.
 
@@ -152,6 +153,7 @@ Fill the slots in conviction order (£100 per slot unless the profile says other
 - **Don't pad.** If nothing clears the bar for a slot, use it for a qualifying core top-up or hold cash, and say so.
 - **Name the rejections**, especially the hot trade everyone is talking about.
 - **eToro check:** run `get-instruments-overview` on every eToro finalist and top-up in one batch: confirm `allowOpenPosition`, note whole-unit-only instruments (adjust the amount to whole shares) and the spread.
+- **Account for each venture pick:** ISA if the stock is available in the person's chosen ISA for the venture sleeve, otherwise the regular account; say which in the orders table. If ISA availability can't be confirmed, mark it CHECK and give the regular account as the fallback.
 - **Execution notes:** limit orders for small caps and anything with a wide spread; trade US names in US hours, away from the open and close; FX cost on non-GBP purchases; prefer GBP-traded lines of UCITS ETFs where equivalent; UK shares carry 0.5% stamp duty (ETFs and AIM shares don't).
 - **Priority order:** if the user only does three things this month, which three.
 - **Arithmetic check:** slots add up to the budget, sells and redeployments reconcile, every figure has a date.

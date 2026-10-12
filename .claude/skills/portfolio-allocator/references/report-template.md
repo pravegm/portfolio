@@ -40,7 +40,9 @@ Templates for the monthly report (Phase 10) and the memory files (Phase 11). Rep
 
 **Scorecard:** picks to date beating benchmark X of Y; median excess return; best and worst categories; what changed in the process because of it.
 
-**Tax and costs:** GIA realized gains this tax year vs £3,000; unrealized losses available; asset-location notes; estimated platform/FX costs this month.
+**Tax and costs:** GIA realized gains this tax year vs £3,000; unrealized losses available; estimated platform/FX costs this month.
+
+**Account placement:** which wrapper each venture pick goes in; GIA holdings classified MOVE / KEEP / EXIT / CHECK. If a migration is under way or requested, include the bed-and-ISA plan (lines to move, estimated CGT vs allowance, sequence, ISA allowance check, estimated costs, step-by-step mechanics).
 
 ---
 

@@ -52,6 +52,23 @@ Where each holding should live:
 - eToro offers a Stocks & Shares ISA (DIY, via Moneyfarm). It removed commission and custody fees in July 2026; FX charges still apply on non-GBP assets. Because multiple stocks & shares ISAs are allowed per year, new venture shots could be bought inside an eToro ISA while staying on eToro, if the name is ISA-eligible there. Raise this as an option in diagnostics (it changes the wrapper, not the strategy); the user decides.
 - Moving existing GIA holdings into an ISA is a bed-and-ISA: crystallises gains (use the exempt amount, spread across tax years and spouses) and uses allowance.
 
+### Wrapper placement rule for the venture sleeve (household decision, October 2026)
+
+- **New micro-cap picks go in an ISA when the stock is available in the chosen ISA, otherwise in the regular eToro account.** Which ISA holds the venture sleeve is recorded in each profile.
+- **Always in the regular account:** crypto, copy-trading portfolios (e.g. AI-Revolution), OTC-only names, CVRs and anything the ISA provider doesn't offer.
+- Check availability name by name. Legally, any share on a recognised exchange (including the smallest Nasdaq/NYSE listings) is ISA-eligible; the binding limit is each provider's ISA list.
+
+### Migrating existing GIA holdings (bed-and-ISA plan)
+
+When a profile or history asks for it, build a migration plan in the report:
+1. **List each GIA holding** with value, unrealized P&L, and its category: `MOVE` (ISA-eligible and available in the chosen ISA), `KEEP` (can't go in an ISA, or the user's standing decision keeps it), `EXIT` (thesis broken; sell, don't rebuy), or `CHECK` (availability in the ISA unknown; the user checks in the app).
+2. **Estimate the CGT result** of selling all `MOVE` and `EXIT` lines this tax year: net the gains and losses, add gains and losses already realized since 6 April, and compare with the £3,000 exempt amount. Gains are measured in GBP (cost and proceeds converted at the rates on each date), so USD P&L is only an estimate. Use eToro trading history and the account statement for exact figures.
+3. **Sequence:** if the net is under the exempt amount, move everything eligible this tax year (cheapest moment is when gains are small). If it is over, move the biggest future-growth names first up to the allowance, then continue after 6 April, or use the spouse's exempt amount (bed-and-spouse) where sensible.
+4. **ISA allowance:** total moved plus this year's other ISA contributions must stay under £20,000.
+5. **Costs:** spreads on sale and rebuy, FX (USD proceeds to GBP and back), and any commission; state the estimated total in £.
+6. **Mechanics:** sell in the GIA, withdraw or transfer cash, deposit into the ISA, rebuy the same day. Limit orders for small caps. Some platforms offer a bed-and-ISA service that does this in one step; check before doing it manually. Record every sale in the realized-gains log.
+7. Note the trade-off plainly: losses inside an ISA can't be used against gains.
+
 ## Withholding tax
 
 - US dividends: 15% US withholding with a W-8BEN on file (30% without). Check the W-8BEN is in place on each platform. Inside an ISA the 15% can't be reclaimed.
