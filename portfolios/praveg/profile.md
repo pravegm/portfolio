@@ -40,6 +40,8 @@
 | Thematic / sector ETFs | 25% | 15-30% |
 | Defensives / fixed income (short-duration gilts, staples, low-vol) | 10% | 0-15% (set tactically) |
 
+Buckets are measured on the ISA **excluding the venture sleeve** (the micro-caps moving in from eToro, and new venture picks). Graduated large-caps moved from eToro (VRTX, NEE, INCY) count as quality large-caps.
+
 **ISA limits:** single stock max 5% of the ISA; single thematic/sector ETF max 5%; a new name should be one worth building to ~2%+ over time, otherwise top up instead.
 
 **Venture sleeve limits:** single position max 10% of the sleeve (standing decisions override; report the weight only); single theme max 30% (crypto = coins + miners + exchanges; AI = direct names + baskets + ETFs); new shots $50M to $3B market cap at entry; follow-ons allowed into holdings whose operating numbers prove the thesis. Themes: best ideas, any theme (AI still counts as fully allocated through AI-Revolution and existing names). **If a micro-cap slot goes to crypto, buy it on eToro** (crypto can't go in an ISA); everything else goes in the Revolut ISA.
