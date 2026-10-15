@@ -14,6 +14,12 @@ AI-Revolution (copy) $1,130 +125% | ACMR $392 +208% | CRDO $263 -14% | INCY $235
 ISRG £214.80 +6.0% | IS3N £196.72 +0.9% | JPM £193.62 -4.1% | SEC0 £143.12 +47.5% | AIAG £142.74 +43.1% | MSFT £135.03 +33.7% | LOCK £128.10 +32.0% | IESU £127.78 +27.8% | V £126.58 +24.4% | META £125.16 +22.1% | 2B78 £123.20 +25.9% | VUAG £115.09 +14.4% | GOOGL £113.58 +13.3% | XOM £111.81 +10.7% | BRK.B £110.45 +9.4% | ICSU £107.62 +7.6% | DE £107.77 +5.9% | CEG £103.87 +2.9% | AMZN £102.90 +1.2% | IWQU £102.75 +1.8% | IIND £100.70 +0.9% | IGLS £100.26 +0.3% | CEBZ £99.94 +4.8% | IUFS £98.59 -2.4% | RBOT £98.14 -4.2% | WSML £94.48 -7.1% | DFNS £91.29 -9.6% | IS0E £91.11 -6.8% | 4COP £88.43 -8.9% | VRT £71.04 -29.1%
 Buckets (of £3,567 invested): core 17.1% (VUAG, IS3N, CEBZ, IWQU, WSML), quality 42.5%, thematic/sector 34.6% (incl. IIND), defensive 5.8% (IGLS, ICSU). Note: "ISOE" in older notes is IS0E (zero).
 
+## Executed from October (confirmed 2026-10-15 16:42, Revolut screenshots + eToro connector)
+✓ All 7 slot orders: VUAG +£400 (4.58 sh, £517), IGLS +£100 (£200), XDEB new £100, SPGI new £102, ICE new £101, MNTN new £106, OMDA new £100
+✓ Tranche 1 complete on 15 Oct: 14 eToro sells (ACMR, INCY, TEM, VRTX, NEE, INOD, PGY, S, QS, MARA, TLRY, ACHR, NNE, PHR); 8 rebuys in the ISA (ACMR £270, INCY £179, TEM £160, VRTX £134, NEE £125, INOD £134, PGY £117, S £111), about 1% fewer shares each (FX and spread cost of the move)
+… Exit proceeds (~$477 / ~£360) withdrawn from eToro but not deposited in the ISA (ISA cash £15.59): bring them in with November's money, earmarked for venture slots.
+Revolut ISA after execution: **£5,839.71** (43 lines, £15.59 cash); allowance used **£4,950** of £20,000. eToro after: **$3,880** (22 lines + AI-Revolution $1,134, now 29% of eToro; $0.55 cash).
+
 ## Executed from September (confirmed 2026-10-15)
 ✓ XOM, IGLS, ICSU (IUCS) bought ✓ JPM, ISRG, IS3N topped up ✓ CRDO, CRSP topped up ✓ ENVX sold 21 Sep
 ✗ PSTX.CVR not closed (impossible, see standing decisions). Also confirmed: C3.ai and ADA sold 14 Aug.
@@ -57,24 +63,24 @@ Almost nothing broke a second time; long-duration growth repriced again. Genuine
 **DON'T ADD:** thematic ETFs (bucket overweight), MSFT/META/V/ICSU/XOM (recent runs), IS3N/WSML/IIND, bitcoin miners, anything AI.
 
 ## Consolidation plan: eToro → Revolut ISA (update every run until finished)
-Status: **tranche 1 recommended 2026-10-15** (to do before the 28 Oct Budget). Pace ~10 lines a month; finish by December 2026.
+Status: **tranche 1 DONE 2026-10-15** (8 moved, 6 exited). Next: tranche 2 in November. Pace ~10 lines a month; finish by December 2026.
 
 | eToro line | Category | Bucket in ISA | Revolut available? | Tranche | Sold on eToro (date, gain/loss) | Rebought in ISA | Status |
 |---|---|---|---|---|---|---|---|
-| ACMR | MOVE | venture | CHECK | 1 (Oct) | | | to do |
-| INCY | MOVE | quality | CHECK | 1 (Oct) | | | to do |
-| TEM | MOVE | venture | CHECK | 1 (Oct) | | | to do |
-| VRTX | MOVE | quality | CHECK | 1 (Oct) | | | to do |
-| NEE | MOVE | quality | CHECK | 1 (Oct) | | | to do |
-| INOD | MOVE | venture | CHECK | 1 (Oct) | | | to do |
-| PGY | MOVE | venture | CHECK | 1 (Oct) | | | to do |
-| S | MOVE | venture | CHECK | 1 (Oct) | | | to do |
-| QS | EXIT | - | - | 1 (Oct) | | - | to do |
-| MARA | EXIT | - | - | 1 (Oct) | | - | to do |
-| TLRY | EXIT | - | - | 1 (Oct) | | - | to do |
-| ACHR | EXIT | - | - | 1 (Oct) | | - | to do |
-| NNE | EXIT | - | - | 1 (Oct) | | - | to do |
-| PHR | EXIT | - | - | 1 (Oct) | | - | to do |
+| ACMR | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+234.08 | DONE |
+| INCY | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+112.48 | DONE |
+| TEM | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+77.35 | DONE |
+| VRTX | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+55.40 | DONE |
+| NEE | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+29.78 (after $11.23 fee) | DONE |
+| INOD | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+35.49 | DONE |
+| PGY | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+22.17 | DONE |
+| S | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+17.16 | DONE |
+| QS | EXIT | - | - | 1 (Oct) | 2026-10-15, $-40.36 | DONE |
+| MARA | EXIT | - | - | 1 (Oct) | 2026-10-15, $-83.14 | DONE |
+| TLRY | EXIT | - | - | 1 (Oct) | 2026-10-15, $-107.12 | DONE |
+| ACHR | EXIT | - | - | 1 (Oct) | 2026-10-15, $-35.59 | DONE |
+| NNE | EXIT | - | - | 1 (Oct) | 2026-10-15, $-60.51 | DONE |
+| PHR | EXIT | - | - | 1 (Oct) | 2026-10-15, $+23.38 | DONE |
 | CRDO | MOVE | venture | CHECK | 2 (Nov) | | | planned |
 | CRSP | MOVE | venture | CHECK | 2 (Nov) | | | planned |
 | KTOS | MOVE | venture | CHECK | 2 (Nov) | | | planned |
@@ -103,7 +109,8 @@ Tranche rules: each tax year's net realized gains within the £3,000 exempt amou
 
 ## ISA allowance tracker 2026/27 (Revolut ISA)
 - Used to 2026-10-15: **£3,700** (per the Revolut app; includes October's £1,000).
-- Planned: tranche 1 ~£1,601 (rebuys £1,248 + exit proceeds £353) → ~£5,301. Tranche 2 ~£1,157, tranche 3 ~£275, monthly £1,000 Nov-Mar £5,000 → ~£11,700 by 5 April 2027. Limit £20,000.
+- After tranche 1 rebuys and this month's £1,000: **£4,950** (per the app, 15 Oct). Exit proceeds (~£360) still to deposit.
+- Planned: exit proceeds ~£360 → Tranche 2 ~£1,157, tranche 3 ~£275, monthly £1,000 Nov-Mar £5,000 → ~£11,700 by 5 April 2027. Limit £20,000.
 
 ## Realized gains log (eToro GIA), tax year 2026/27 (USD; GBP needs the eToro statement)
 | Date | Sold | Gain/loss (USD) | Running total |
@@ -111,7 +118,8 @@ Tranche rules: each tax year's net realized gains within the £3,000 exempt amou
 | 2026-08-14 | C3.ai (AI) | -86.76 | -86.76 |
 | 2026-08-14 | ADA | -78.19 | -164.95 |
 | 2026-09-21 | ENVX | -88.28 (plus -10.53 fees) | -263.76 |
-Tranche 1 estimate (at 15 Oct prices): about +$286 net → running ~+$22 (~£17) vs the £3,000 allowance. Higher-rate taxpayer: 24% above the allowance.
+| 2026-10-15 | Tranche 1 (14 sells: ACMR +234.08, INCY +112.48, TEM +77.35, VRTX +55.40, NEE +41.01 less 11.23 fee, INOD +35.49, PGY +22.17, S +17.16, PHR +23.38, QS -40.36, MARA -83.14, TLRY -107.12, ACHR -35.59, NNE -60.51) | +280.57 | **+16.81** |
+Running total ~+$17 (~£13) vs the £3,000 allowance. Higher-rate taxpayer: 24% above the allowance. GBP figures need eToro's annual statement.
 
 ## Rejected October
 - Venture (~60 screened): pre-revenue biotech (AGIO, VIR, SEPN, FDMT, ARVN and others; fails the new bar); crypto-treasury companies (SBET, HSDT, TONX); precious-metal royalty plays; defence/space (crowded: HAWK, FEIM, KOPN); AI chips (AMBQ, AIP); RDVT (premium valuation; 6th), BWAY (thin trading; 5th), ZVRA (68, weak 10x path; alternate), DCTH (70; alternate); PAYS (strong but ran too far: watchlist).
