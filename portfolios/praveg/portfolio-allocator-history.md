@@ -67,20 +67,20 @@ Status: **tranche 1 DONE 2026-10-15** (8 moved, 6 exited). Next: tranche 2 in No
 
 | eToro line | Category | Bucket in ISA | Revolut available? | Tranche | Sold on eToro (date, gain/loss) | Rebought in ISA | Status |
 |---|---|---|---|---|---|---|---|
-| ACMR | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+234.08 | DONE |
-| INCY | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+112.48 | DONE |
-| TEM | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+77.35 | DONE |
-| VRTX | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+55.40 | DONE |
-| NEE | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+29.78 (after $11.23 fee) | DONE |
-| INOD | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+35.49 | DONE |
-| PGY | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+22.17 | DONE |
-| S | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+17.16 | DONE |
-| QS | EXIT | - | - | 1 (Oct) | 2026-10-15, $-40.36 | DONE |
-| MARA | EXIT | - | - | 1 (Oct) | 2026-10-15, $-83.14 | DONE |
-| TLRY | EXIT | - | - | 1 (Oct) | 2026-10-15, $-107.12 | DONE |
-| ACHR | EXIT | - | - | 1 (Oct) | 2026-10-15, $-35.59 | DONE |
-| NNE | EXIT | - | - | 1 (Oct) | 2026-10-15, $-60.51 | DONE |
-| PHR | EXIT | - | - | 1 (Oct) | 2026-10-15, $+23.38 | DONE |
+| ACMR | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+234.08 | rebought 6.34 sh, £270 | DONE |
+| INCY | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+112.48 | rebought 2.09 sh, £179 | DONE |
+| TEM | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+77.35 | rebought 3.06 sh, £160 | DONE |
+| VRTX | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+55.40 | rebought 0.34 sh, £134 | DONE |
+| NEE | MOVE | quality | yes | 1 (Oct) | 2026-10-15, $+29.78 (after $11.23 fee) | rebought 2.1 sh, £125 | DONE |
+| INOD | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+35.49 | rebought 3.25 sh, £134 | DONE |
+| PGY | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+22.17 | rebought 9.06 sh, £117 | DONE |
+| S | MOVE | venture | yes | 1 (Oct) | 2026-10-15, $+17.16 | rebought 6.47 sh, £111 | DONE |
+| QS | EXIT | - | - | 1 (Oct) | 2026-10-15, $-40.36 | - | DONE |
+| MARA | EXIT | - | - | 1 (Oct) | 2026-10-15, $-83.14 | - | DONE |
+| TLRY | EXIT | - | - | 1 (Oct) | 2026-10-15, $-107.12 | - | DONE |
+| ACHR | EXIT | - | - | 1 (Oct) | 2026-10-15, $-35.59 | - | DONE |
+| NNE | EXIT | - | - | 1 (Oct) | 2026-10-15, $-60.51 | - | DONE |
+| PHR | EXIT | - | - | 1 (Oct) | 2026-10-15, $+23.38 | - | DONE |
 | CRDO | MOVE | venture | CHECK | 2 (Nov) | | | planned |
 | CRSP | MOVE | venture | CHECK | 2 (Nov) | | | planned |
 | KTOS | MOVE | venture | CHECK | 2 (Nov) | | | planned |
