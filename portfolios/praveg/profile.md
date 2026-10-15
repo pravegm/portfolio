@@ -8,9 +8,10 @@
 
 ## Consolidation goal (set 2026-10-12): everything into the Revolut ISA
 - **End state:** one account, the Revolut Stocks & Shares ISA, holding the core, the quality large-caps, the ETFs and the venture sleeve.
-- **New money:** from the October 2026 run, all £1,000 a month goes to the Revolut ISA, including the 2 micro-cap slots. No new deposits to eToro (confirm on the October run).
+- **New money:** from the October 2026 run, all £1,000 a month goes to the Revolut ISA, including the 2 micro-cap slots (confirmed 2026-10-15). No new deposits to eToro, except a micro-cap slot that goes to crypto.
 - **Existing eToro holdings:** moved gradually by bed-and-ISA (sell on eToro, rebuy in the Revolut ISA) in monthly tranches, following the consolidation plan in `portfolio-allocator-history.md` and the method in `.claude/skills/portfolio-allocator/references/uk-tax-and-wrappers.md`. Target: finished within the 2026/27 tax year if the CGT and ISA allowances allow, otherwise early 2027/28.
-- **Can't go in an ISA; decide case by case on the October run:** crypto (BTC, SOL, BNB: keep on eToro, sell, or move to Revolut's crypto account; selling or moving is a CGT disposal), the AI-Revolution copy portfolio (a standing decision says keep it; consolidating means either keeping eToro open just for it or exiting it), PSTX.CVR (can't be sold; stays until it pays out or expires), and any listing Revolut doesn't offer (likely the Oslo, Stockholm and Hong Kong lines: MEDI.OL, BIOGb.ST, 01211.HK, 9866.HK).
+- **Stays on eToro (decided 2026-10-15):** crypto (BTC, SOL, BNB, and any future crypto micro-cap pick), the AI-Revolution copy portfolio (standing decision: keep), PSTX.CVR (can't be sold). Foreign listings (MEDI.OL, BIOGb.ST, 01211.HK, 9866.HK) are judged on merit: sell if the thesis is weak; if strong, rebuy in the Revolut ISA where available (e.g. a US listing), otherwise keep on eToro.
+- **Pace:** about 10 holdings a month; target finish January 2027.
 - **Revolut availability can't be checked automatically** (Revolut blocks automated access and has no API). Each month, give a single CHECK list of tickers for Praveg to search in the Revolut app.
 
 ## Micro-cap venture sleeve (moving from eToro to the Revolut ISA)
@@ -27,35 +28,32 @@
 - Mix of large-caps and ETFs (split decided per run)
 - Lower risk, compounding focus
 
-## Investment policy (PROPOSED: confirm on next run)
+## Investment policy (confirmed 2026-10-15)
 
-Defaults from `.claude/skills/portfolio-allocator/references/wealth-management-framework.md`. The next run confirms or adjusts these with the user, then removes this PROPOSED marker.
+**Objectives:** long-term wealth building, 10+ year horizon. No money needed within 5 years.
 
-**Objectives:** long-term wealth building, 10+ year horizon. Money needed within ~5 years: [confirm: none?]
-
-**ISA strategic allocation**
+**ISA strategic allocation** (Praveg capped core at 25%)
 | Bucket | Target | Band |
 |---|---|---|
-| Core (1-3 broad, cheap, accumulating UCITS index funds, e.g. a global all-cap or developed-world tracker plus EM) | 50% | 40-60% (build toward it with new money) |
-| Quality large-caps | 25% | 15-35% |
-| Thematic / sector ETFs | 15% | 0-20% |
+| Core (broad, cheap index funds: S&P 500, global, EM, Europe) | 25% | 15-25% (never above 25%) |
+| Quality large-caps | 40% | 30-50% |
+| Thematic / sector ETFs | 25% | 15-30% |
 | Defensives / fixed income (short-duration gilts, staples, low-vol) | 10% | 0-15% (set tactically) |
 
 **ISA limits:** single stock max 5% of the ISA; single thematic/sector ETF max 5%; a new name should be one worth building to ~2%+ over time, otherwise top up instead.
 
-**eToro venture sleeve limits:** single position max 10% of the sleeve (standing user decisions in the history override this; report the weight only); single theme max 30% (crypto = coins + miners + exchanges; AI = direct names + baskets + ETFs); new shots $50M to $3B market cap at entry; follow-ons allowed into holdings whose operating numbers prove the thesis.
+**Venture sleeve limits:** single position max 10% of the sleeve (standing decisions override; report the weight only); single theme max 30% (crypto = coins + miners + exchanges; AI = direct names + baskets + ETFs); new shots $50M to $3B market cap at entry; follow-ons allowed into holdings whose operating numbers prove the thesis. Themes: best ideas, any theme (AI still counts as fully allocated through AI-Revolution and existing names). **If a micro-cap slot goes to crypto, buy it on eToro** (crypto can't go in an ISA); everything else goes in the Revolut ISA.
 
-**Benchmarks (in GBP):** ISA vs FTSE All-World (e.g. VWRP); eToro vs Russell 2000, with FTSE All-World as a second reference.
+**Benchmarks (in GBP):** ISA vs S&P 500 (VUAG as the GBP proxy); venture sleeve vs Russell 2000, with the S&P 500 as a second reference.
 
-**Exclusions / preferences:** [confirm: none?]
+**Exclusions / preferences:** none.
 
-**Policy last reviewed:** not yet
+**Policy last reviewed:** 2026-10-15
 
-## Financial foundations (confirm on next run; re-check annually)
-- Emergency fund (3-6 months of essential spending) in place: [confirm]
-- High-interest debt: [confirm]
-- Workplace pension: full employer match taken; salary sacrifice considered: [confirm]
-- Income tax band (sets CGT and dividend tax rates for eToro): [confirm]
-- Age bracket for Lifetime ISA eligibility (under 40) and any first-home plans: [confirm]
-- Goals with dates (house, family, early retirement): [confirm]
-- Protection (life / income) if others depend on this income: [confirm]
+## Financial foundations (confirmed 2026-10-15; re-check annually)
+- Emergency fund of 3-6+ months: yes
+- High-interest debt: none
+- Workplace pension: full employer match taken
+- Income tax band: higher rate (CGT 24% above the £3,000 exempt amount; dividend tax 35.75% above £500 outside ISAs)
+- Lifetime ISA: not relevant (no first-home plans)
+- Goals: long-term wealth; nothing needed within 5 years
