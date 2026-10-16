@@ -30,19 +30,23 @@ Defaults from `.claude/skills/portfolio-allocator/references/wealth-management-f
 
 **Objectives:** long-term wealth building, 10+ year horizon. Money needed within ~5 years: [confirm: none?]
 
-**ISA strategic allocation**
+**ISA strategic allocation** (set 2026-10-16 to match Praveg's policy, at his request: core capped at 25%. Shubhi can still adjust on her first run.)
 | Bucket | Target | Band |
 |---|---|---|
-| Core (1-3 broad, cheap, accumulating UCITS index funds, e.g. a global all-cap or developed-world tracker plus EM) | 50% | 40-60% (build toward it with new money) |
-| Quality large-caps | 25% | 15-35% |
-| Thematic / sector ETFs | 15% | 0-20% |
+| Core (broad, cheap index funds: S&P 500, global, EM, Europe) | 25% | 15-25% (never above 25%) |
+| Quality large-caps | 40% | 30-50% |
+| Thematic / sector ETFs | 25% | 15-30% |
 | Defensives / fixed income (short-duration gilts, staples, low-vol) | 10% | 0-15% (set tactically) |
+
+Buckets are measured on the ISA **excluding the venture sleeve** (her micro-caps).
+
+**Starting point:** her ISA is 100% core today (the £1,000 S&P 500 ETF bought in September 2026), so it starts far above the 25% cap. Don't sell it: new money goes to the other buckets (no new core money) until core falls back to 25%, which takes roughly £3,000 of non-core buying (about 4 months of ISA slots).
 
 **ISA limits:** single stock max 5% of the ISA; single thematic/sector ETF max 5%; a new name should be one worth building to ~2%+ over time, otherwise top up instead.
 
 **Venture sleeve limits:** single position max 10% of the sleeve (standing user decisions in the history override this; report the weight only); single theme max 30% (crypto = coins + miners + exchanges; AI = direct names + baskets + ETFs); new shots $50M to $3B market cap at entry; follow-ons allowed into holdings whose operating numbers prove the thesis.
 
-**Benchmarks (in GBP):** ISA vs FTSE All-World (e.g. VWRP); venture sleeve vs Russell 2000, with FTSE All-World as a second reference.
+**Benchmarks (in GBP):** ISA vs S&P 500 (same as Praveg); venture sleeve vs Russell 2000, with the S&P 500 as a second reference.
 
 **Exclusions / preferences:** [confirm: none?]
 
