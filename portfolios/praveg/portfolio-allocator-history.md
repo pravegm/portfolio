@@ -33,14 +33,14 @@ Revolut ISA after execution: **£5,839.71** (43 lines, £15.59 cash); allowance 
 - 2026-09-20: CRDO top-up, CRSP top-up (eToro); XOM new + JPM top-up + ISRG top-up; IGLS new + IUCS new + IS3N top-up. Theme: ballast into a rate shock.
 - 2026-10-15: **MNTN, OMDA (venture, first in the Revolut ISA); VUAG ×4; IGLS top-up; XDEB new; SPGI new; ICE new.** Theme: build core and defences, quality that benefits from volatility, raise the venture bar. Plus consolidation tranche 1 (see below).
 
-## EXTRA INVESTMENT PLAN, Oct-Nov 2026 (agreed 2026-10-17; reconcile at the November run)
-£3,000 extra into the Revolut ISA on top of the monthly £1,000, from surplus cash above the emergency fund, in three tranches. Plus the ~£360 eToro exit proceeds (still earmarked for November's venture slots).
-| Tranche | When | Orders |
+## EXTRA INVESTMENT PLAN, Oct-Nov 2026 (agreed 2026-10-17: £1,000 extra; reconcile at the November run)
+£1,000 extra into the Revolut ISA on top of the monthly £1,000, in three batches. Plus the ~£360 eToro exit proceeds (still earmarked for November's venture slots).
+| Batch | When | Orders |
 |---|---|---|
-| 1 | 19-27 Oct (before the 28 Oct Fed/Budget/earnings cluster) | IGLS £350, VUAG £450, NVDA £125, TSM £125, AVGO £100 (£1,150) |
-| 2 | 30 Oct-6 Nov (after MSFT/GOOGL/AMZN results, FOMC, Budget) | VUAG £450, AMZN £250, GOOGL £250, SPGI £150, NVDA £125, TSM £125, AVGO £125 (£1,475) |
-| 3 | 19-20 Nov (after NVDA results 18 Nov; folds into the November run) | NVDA £125, TSM £125, AVGO £125 (£375) |
-Condition: if hyperscalers cut AI capex guidance on 28-29 Oct or NVDA guides down on 18 Nov, skip the remaining chip orders; that money goes to VUAG up to the 25% core cap and the rest waits for the next run. Policy deviation, recorded: this partly overrides the "no new AI money" rule, upgrading AI exposure toward cash-rich leaders (NVDA, TSM, AVGO) at ~14-18x forward earnings after the chip index fell 24% from its June peak; capped at ~4.5-4.8% of the ISA each. After all tranches: core 24.5%, quality 50.0% (top of band), thematic 15.9%, defensive 9.7%.
+| 1 | 19-27 Oct (before the 28 Oct Fed/Budget/earnings cluster) | IGLS £200, NVDA £100, TSM £100 (£400) |
+| 2 | 30 Oct-6 Nov (after MSFT/GOOGL/AMZN results, FOMC, Budget) | VUAG £300, TSM £100, AVGO £100 (£500) |
+| 3 | 19-20 Nov (after NVDA results 18 Nov; folds into the November run) | NVDA £100 (£100) |
+Condition: if hyperscalers cut AI capex guidance on 28-29 Oct or NVDA guides down on 18 Nov, skip the remaining chip orders and put that money into VUAG. Policy deviation, recorded: partly overrides "no new AI money" to upgrade AI exposure toward cash-rich leaders (NVDA, TSM, AVGO) after the chip index fell 24% from its June peak. After all batches (on ~£5,825 ex-venture): core 22.6%, quality 45.7%, thematic 21.3%, defensive 10.4%; NVDA and TSM ~3.4% each, AVGO ~1.7%.
 
 ## OCTOBER 2026: ESCALATION, not reversal
 - US 10y hit 5.31-5.36% (1-7 Oct, 24-year high), 5.19% on 14 Oct. UK 10y gilt ~5.5% (highest since 2007), 30y ~6.05% (since 1998).
