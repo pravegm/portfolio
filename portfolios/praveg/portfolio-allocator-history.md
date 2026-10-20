@@ -37,8 +37,8 @@ Revolut ISA after execution: **£5,839.71** (43 lines, £15.59 cash); allowance 
 £1,000 extra into the Revolut ISA on top of the monthly £1,000, in three batches. Plus the ~£360 eToro exit proceeds (still earmarked for November's venture slots).
 | Batch | When | Orders |
 |---|---|---|
-| 1 | 19-27 Oct (before the 28 Oct Fed/Budget/earnings cluster) | IGLS £200, NVDA £100, TSM £100 (£400) |
-| 2 | 30 Oct-6 Nov (after MSFT/GOOGL/AMZN results, FOMC, Budget) | VUAG £300, TSM £100, AVGO £100 (£500) |
+| 1 | **DONE 2026-10-20** | IGLS £200, NVDA £100, AVGO £100 (£400). TSM swapped for AVGO: **TSMC (TSM) is not available on Revolut.** |
+| 2 | 30 Oct-6 Nov (after MSFT/GOOGL/AMZN results, FOMC, Budget) | VUAG £300, SMGB £100 (VanEck Semiconductor ETF, GBP line, holds TSMC; replaces TSM), AVGO £100 (£500) |
 | 3 | 19-20 Nov (after NVDA results 18 Nov; folds into the November run) | NVDA £100 (£100) |
 Condition: if hyperscalers cut AI capex guidance on 28-29 Oct or NVDA guides down on 18 Nov, skip the remaining chip orders and put that money into VUAG. Policy deviation, recorded: partly overrides "no new AI money" to upgrade AI exposure toward cash-rich leaders (NVDA, TSM, AVGO) after the chip index fell 24% from its June peak. After all batches (on ~£5,825 ex-venture): core 22.6%, quality 45.7%, thematic 21.3%, defensive 10.4%; NVDA and TSM ~3.4% each, AVGO ~1.7%.
 
