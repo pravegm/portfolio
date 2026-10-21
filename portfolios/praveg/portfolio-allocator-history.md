@@ -37,7 +37,7 @@ Revolut ISA after execution: **£5,839.71** (43 lines, £15.59 cash); allowance 
 £1,000 extra into the Revolut ISA on top of the monthly £1,000, in three batches. Plus the ~£360 eToro exit proceeds (still earmarked for November's venture slots).
 | Batch | When | Orders |
 |---|---|---|
-| 1 | **DONE 2026-10-20** | IGLS £200, NVDA £100, AVGO £100 (£400). TSM swapped for AVGO: **TSMC (TSM) is not available on Revolut.** |
+| 1 | **DONE 2026-10-20** | IGLS £200, NVDA £100, AVGO £100 (£400). TSM swapped for AVGO: **TSMC (TSM) is not available on Revolut.** Only £400 was deposited, so batches 2-3 need their £600 deposited at the time. |
 | 2 | 30 Oct-6 Nov (after MSFT/GOOGL/AMZN results, FOMC, Budget) | VUAG £300, SMGB £100 (VanEck Semiconductor ETF, GBP line, holds TSMC; replaces TSM), AVGO £100 (£500) |
 | 3 | 19-20 Nov (after NVDA results 18 Nov; folds into the November run) | NVDA £100 (£100) |
 Condition: if hyperscalers cut AI capex guidance on 28-29 Oct or NVDA guides down on 18 Nov, skip the remaining chip orders and put that money into VUAG. Policy deviation, recorded: partly overrides "no new AI money" to upgrade AI exposure toward cash-rich leaders (NVDA, TSM, AVGO) after the chip index fell 24% from its June peak. After all batches (on ~£5,825 ex-venture): core 22.6%, quality 45.7%, thematic 21.3%, defensive 10.4%; NVDA and TSM ~3.4% each, AVGO ~1.7%.
@@ -118,7 +118,8 @@ Tranche rules: each tax year's net realized gains within the £3,000 exempt amou
 
 ## ISA allowance tracker 2026/27 (Revolut ISA)
 - Used to 2026-10-15: **£3,700** (per the Revolut app; includes October's £1,000).
-- After tranche 1 rebuys and this month's £1,000: **£4,950** (per the app, 15 Oct). Exit proceeds (~£360) still to deposit.
+- After tranche 1 rebuys and this month's £1,000: £4,950 (15 Oct). After the extra plan's batch 1 deposit (£400, 20 Oct): **£5,350** (Revolut statement 21 Oct: deposits £800 + £200 + £1,250 + £400 since 1 Oct). Exit proceeds (~£360) and the extra plan's remaining £600 still to deposit.
+- Revolut ISA on 21 Oct (statement): £6,206.74 (46 lines, £0.73 cash). The leftover £15.59 went into IGLS on 20 Oct. The £200 IGLS buy isn't listed in the statement's transactions but shows in the holding (3.32 units) and the cash reconciles.
 - Planned: exit proceeds ~£360 → Tranche 2 ~£1,157, tranche 3 ~£275, monthly £1,000 Nov-Mar £5,000 → ~£11,700 by 5 April 2027. Limit £20,000.
 
 ## Realized gains log (eToro GIA), tax year 2026/27 (USD; GBP needs the eToro statement)
